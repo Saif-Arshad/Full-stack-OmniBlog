@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react';
+// import { signIn } from 'next-auth/react';
 function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Fname,setFname] = useState("")
@@ -12,36 +12,40 @@ function page() {
   const [Email,setEmail] = useState("")
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Password,setPassword] = useState("")
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [error,seterror] = useState("")
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
-  console.log(Email,Password);
   const adminlogin = async (e)=>{
-    if(error) {
-      console.log(error);
-    }
       e.preventDefault() 
-      // alert(Email, Password,Lname,Fname)
       if(!Email || !Password || !Lname || !Fname){
         alert("All Fields are required")
         return;
       }
-      try {
-        const login=  await signIn('credentials', {
-          email: Email,
-          password: Password,
-          redirect: false,
+      const res = await fetch("api/admin/login", {
+        method: 'POST',
+        headers: {
+          "content-Type": "application/json"
+        },
+        body: JSON.stringify({
+           Email, Password
         })
-        if(login?.error){
-          seterror("Invalid login")
-          return
-        }
-        router.push('/admin/dashboard')
+      })  
+      router.push("/admin/dashboard");
+    //   try {
+    //     const login=  await signIn('credentials', {
+    //       email: Email,
+    //       password: Password,
+    //       redirect: false,
+    //     })
+    //     if(login?.error){
+    //       seterror("Invalid login")
+    //       return
+    //     }
+    //     router.push('/admin/dashboard')
 
-    } catch (error) {
-      console.log(error);      
-    }
+    // } catch (error) {
+    //   console.log(error);      
+    // }
 
   }
   return (

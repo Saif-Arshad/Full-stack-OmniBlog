@@ -21,9 +21,7 @@ export const authOptions = {
           if (!admin) {
             return null;
           }
-          console.log(password,admin.password);
           const currentPassword =  (password === admin.password);
-          console.log(currentPassword);
 
           if (!currentPassword) {
             return null;

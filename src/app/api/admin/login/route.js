@@ -1,7 +1,7 @@
-import { Jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import DbConnection from "@/Mongodb/mongodb";
-import Admin from "@/Mongodb/models/Admin";
+import Admin from "@/Models/Admin";
 export async function POST(req) {
     try {
         await DbConnection();
@@ -9,13 +9,19 @@ export async function POST(req) {
         const admin = await Admin.findOne({ email: Email });
 
         if (!admin) {
-            return NextResponse.json({ userExists: false });
-        }
+            console.log("Email is wrong");
+            return NextResponse.json({ error: "Email is wrong"});        }
 
+            const currentPassword =  (Password === admin.password);
+            console.log(currentPassword);
+            if (!currentPassword) {
+                console.log("password is not valid");
+                return NextResponse.json({ error: "Password is wrong"});        }
+ 
         const tokenData = {
             id: admin._id,
-            username: admin.Fname + " " + admin.Lname,
-            email: admin.Email
+            username: admin.Firstname + " " + admin.Lastname,
+            email: admin.email
         };
         console.log(tokenData);
         
