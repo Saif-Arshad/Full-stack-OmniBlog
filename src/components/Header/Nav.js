@@ -83,7 +83,7 @@ function Nav() {
               <li>
                 <Link
                   href="/"
-                  className="block py-2 pl-3 pr-4 text-gray-700 bg-purple-700 rounded lg:bg-transparent lg:p-0 lg:hover:text-purple-700 "
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded lg:bg-transparent lg:p-0 lg:hover:text-purple-700 "
                 >
                   Home
                 </Link>

@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Loader from '@/components/Loader/loader'
 function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Fname,setFname] = useState("")
@@ -76,10 +77,11 @@ function page() {
                 </label>
                 <input onChange={(e)=>setPassword(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="••••••••" id="confirmPassword" type="password"/>
               </div>
-        <h5 className='text-xl font-bold text-center '>{Processing?"Processing...." :""}</h5>
+              {Processing? <Loader/> :
               <button className="w-full bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white" type="submit">
                 Admin Login
               </button>
+}
             
           </div>
         </div>
