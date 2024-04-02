@@ -2,7 +2,6 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-// import { signIn } from 'next-auth/react';
 function page() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Fname,setFname] = useState("")
@@ -31,22 +30,6 @@ function page() {
         })
       })  
       router.push("/admin/dashboard");
-    //   try {
-    //     const login=  await signIn('credentials', {
-    //       email: Email,
-    //       password: Password,
-    //       redirect: false,
-    //     })
-    //     if(login?.error){
-    //       seterror("Invalid login")
-    //       return
-    //     }
-    //     router.push('/admin/dashboard')
-
-    // } catch (error) {
-    //   console.log(error);      
-    // }
-
   }
   return (
     <div className='flex h-screen w-screen justify-center pt-11' >

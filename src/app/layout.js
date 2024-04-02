@@ -1,5 +1,4 @@
 import "./globals.css";
-// import Provider from "./provider";
 
 export const metadata = {
   title: "The Omni Blog",
@@ -10,11 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-      {/* <Provider> */}
-        
         {children}
-
-        {/* </Provider> */}
         </body>
     </html>
   );
