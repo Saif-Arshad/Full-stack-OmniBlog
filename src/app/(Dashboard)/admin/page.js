@@ -1,22 +1,18 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 'use client'
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Loader from '@/components/Loader/loader'
 function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Fname,setFname] = useState("")
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Lname,setLname] = useState("")
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Email,setEmail] = useState("")
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Password,setPassword] = useState("")
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [Processing,setProcessing] = useState(false)
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
+  
   const adminlogin = async (e)=>{
     setProcessing(true)
       e.preventDefault() 
