@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const SubheadingSchema = new mongoose.Schema({
+    image:{
+        type: String,
+        // required: true
+    },
     title: {
         type: String,
         // required: true
@@ -23,6 +27,10 @@ const BlogSchema = new mongoose.Schema({
     categorie: {
         type: String,
         required: true
+    },
+    image:{
+        type: String,
+        // required: true
     },
     author: {
         type: String,

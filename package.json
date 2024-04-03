@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uploadthing/react": "^6.4.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.4",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "uploadthing": "^6.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

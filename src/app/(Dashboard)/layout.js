@@ -1,6 +1,5 @@
 import "../globals.css";
 
-
 export const metadata = {
   title: "Admin | Omni Blog",
   description: `Website for blogs and have an admin dashboard where admin can see all blogs there 
