@@ -23,7 +23,6 @@ export async function POST(req) {
             });
         }
         
-        // Create a new BlogModel instance with the provided data
         const newBlog = await BlogModel.create({
             title,
             maincontent: Maincontent,
@@ -33,14 +32,11 @@ export async function POST(req) {
             subContent: subContentArray 
         });
 
-        // Save the new blog document to the database
         await newBlog.save();
 
-        // Return a success response
         return new Response("Blog created successfully", { status: 200 });
     } catch (error) {
         console.log(error);
-        // Return an error response in case of any errors
         return new Response("Internal Server Error", { status: 500 });
     }
 }

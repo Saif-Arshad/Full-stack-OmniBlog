@@ -15,9 +15,9 @@ try {
 }
   }
   return (
-    <div className='flex'>
+    <div className='flex '>
       <AdminSideBar/>
-        <div className="content p-12 pt-24">
+        <div className="content sm:ml-64">
         <h1>Hello I am from admin Dashbord</h1>
         <button onClick={logout} className='bg-red-700 text-white p-2'>LogOUt</button>
         </div>
