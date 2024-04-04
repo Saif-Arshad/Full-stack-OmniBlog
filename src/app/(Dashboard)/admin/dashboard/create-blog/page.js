@@ -86,7 +86,7 @@ export default function Page() {
             <div>
             <label htmlFor="Main Image" className="text-sm mt-6 font-medium text-purple-800 block mb-2">Upload Main Image</label>
 
-            <div name="Mainimage" className=" max-w-xs cursor-pointer bg-black h-8 p-1 rounded-lg overflow-hidden w-13 sm:max-w-full">
+            <div name="Mainimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 sm:max-w-full">
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
@@ -116,7 +116,7 @@ export default function Page() {
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 block mb-2">Sub Image</label>
 
-            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-8 p-1 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
+            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
