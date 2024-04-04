@@ -1,16 +1,17 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import AdminSideBar from '@/components/AdminSideBar';
 import Dropdown from '@/components/Dropdown/Dropdown';
+import { useSearchParams } from 'next/navigation'
 
 function Page() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
+  const searchParams = useSearchParams()
+  const blogUrl = searchParams.get('blog')
+    console.log(blogUrl);
   useEffect(() => {
     const fetchData = async () => {
-      console.log(selectedCategory);
       try {
-        const response = await fetch(`/api/admin/blog/filtering?blog=${selectedCategory}`);
+        const response = await fetch(`/api/admin/blog/filtering?blog=${blogUrl}`);
         if (!response.ok) {
           console.log(('Failed to fetch data'));
         }
@@ -22,14 +23,13 @@ function Page() {
     };
 
     fetchData();
-  }, [selectedCategory]); // Run the effect whenever selectedCategory changes
+  }, [blogUrl]); 
 
   return (
     <div className='flex sm:ml-64'>
       <AdminSideBar />
       <div className="flex flex-col">
-        <Dropdown selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-        <h1>Hi, Im from all posts</h1>
+        <Dropdown/>
       </div>
     </div>
   );
