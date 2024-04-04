@@ -14,7 +14,7 @@ function Nav() {
   return (
     <div>
       <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
-        <div className="flex flex-wrap items-center sm:justify-between justify-center max-w-screen-xl px-4 mx-auto">
+        <div className="flex flex-wrap flex-col sm:flex-row   items-center sm:justify-between justify-center max-w-screen-xl px-4 mx-auto">
           <Link href="/" >
           <span className="self-center flex items-center text-2xl font-bold whitespace-nowrap text-orange-500">
                 Omni
@@ -28,7 +28,7 @@ function Nav() {
               log
             </span>
           </Link>
-          <div className="flex items-center gap-x-12 mt-5 ml-2  sm:gap-x-0 sm:mt-0 sm:ml-0 lg:order-2">
+          <div className="flex items-center gap-x-2 mt-5 ml-2  sm:gap-x-0 sm:mt-0 sm:ml-0 lg:order-2">
             <div className="hidden mt-2 mr-4 sm:inline-block">
               <span></span>
             </div>
@@ -89,23 +89,33 @@ function Nav() {
                 </Link>
               </li>
               <li>
-                    <Link href="#"
+                    <Link
+                     href="/catagorie?filter1=technology"
                         className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Technology</Link>
                 </li>
                 <li>
-                    <Link href="#"
+                    <Link 
+                   href="/catagorie?filter1=food&filter2=health"
+
                         className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Food & Health</Link>
                 </li>
                 <li>
-                    <Link href="#"
+                    <Link 
+                                        href="/catagorie?filter1=movie&filter2=sport"
+                                        
+
                         className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Movie & Sports</Link>
                 </li>
                 <li>
-                    <Link href="#"
+                    <Link
+             href="/catagorie?filter1=news"
+
                         className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">News</Link>
                 </li>
                 <li>
-                    <Link href="#"
+                    <Link
+                                        href="/catagorie?filter1=fashion&filter2=lifestyle"
+                    
                         className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Fashion & Lifestyle</Link>
                 </li>
             </ul>

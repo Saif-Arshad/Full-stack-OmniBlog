@@ -36,11 +36,21 @@ export default function Footer() {
               <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-purple-700">Categories</h2>
             </div>
             <ul className="leading-8">
-              <li><Link href="#" className="hover:text-purple-700">Technology</Link></li>
-              <li><Link href="#" className="hover:text-purple-700">Food & Health</Link></li>
-              <li><Link href="#" className="hover:text-purple-700">Movie & Sports</Link></li>
-              <li><Link href="#" className="hover:text-purple-700">News</Link></li>
-              <li><Link href="#" className="hover:text-purple-700">Fashion & Lifestyle</Link></li>
+              <li><Link 
+               href="/catagorie?filter1=technology"
+              className="hover:text-purple-700">Technology</Link></li>
+              <li><Link
+                href="/catagorie?filter1=food&filter2=health"
+               className="hover:text-purple-700">Food & Health</Link></li>
+              <li><Link
+              href="/catagorie?filter1=movie&filter2=sport"
+               className="hover:text-purple-700">Movie & Sports</Link></li>
+              <li><Link
+               href="/catagorie?filter1=news"
+                className="hover:text-purple-700">News</Link></li>
+              <li><Link
+               href="/catagorie?filter1=fashion&filter2=lifestyle"
+               className="hover:text-purple-700">Fashion & Lifestyle</Link></li>
             </ul>
           </div>
           <div className="px-4 my-4 w-full sm:w-auto">
@@ -52,7 +62,7 @@ export default function Footer() {
               <li><Link href="#" className="hover:text-purple-700">What Is Flex And When to Use It?</Link></li>
               <li><Link href="#" className="hover:text-purple-700">How TailwindCSS Can Help Your Productivity?</Link></li>
               <li><Link href="#" className="hover:text-purple-700">5 Tips to Make Responsive Website</Link></li>
-              <li><Link href="#" className="hover:text-purple-700">See More</Link></li>
+              <li><Link href="/" className="hover:text-purple-700">See More</Link></li>
             </ul>
           </div>
           <div className="px-4 my-4 w-full sm:w-auto xl:w-1/5">

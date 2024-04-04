@@ -3,7 +3,8 @@ import BlogModel from "@/Models/Blog";
 import DbConnection from "@/Mongodb/mongodb";
 import { NextResponse } from "next/server";
 export async function GET(req){
-    const filter = req.nextUrl.searchParams.get("blog");
+    const filter = req.nextUrl.searchParams.get("blog") || "All" ;
+    console.log(filter);
     if(filter==="All"){
         console.log(filter);
         await DbConnection()
