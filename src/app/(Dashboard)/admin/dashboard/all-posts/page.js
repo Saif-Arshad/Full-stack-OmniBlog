@@ -34,6 +34,26 @@ function Page() {
   useEffect(() => {
     console.log(Data);
   }, [Data]);
+      
+
+  const DeleteNow =async (id) => {
+    const confirming = confirm(`Are you sure you want to delete this article ?`);
+    if (confirming) {
+      const response = await fetch(`/api/admin/blog/deleteing?id=${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        window.location.reload();
+        console.log('Article deleted successfully');
+      } else {
+        console.log('Failed to delete article');
+      }
+    } {
+      
+    }
+  }
+
+
 
   return (
     <div className="flex sm:ml-64">
@@ -70,7 +90,9 @@ function Page() {
                         </p>
                         <div className="flex items-center flex-wrap flex-col">
                         <div className='flex mb-5 justify-between w-1/3'>
-
+                    <Link
+                      href={`/admin/dashboard/edit-blog/${data._id}`}
+                    >
                         <Image
                         className='cursor-pointer hover:scale-105'
                           src={Pencil}
@@ -79,9 +101,8 @@ function Page() {
                           alt='Edit'
                         >
                         </Image>
-                     <Link
-                      href='http://'
-                     >
+                        </Link>
+                   <button onClick={()=>DeleteNow(data._id)} className='bg-transparent border-none'>
                         <Image
                         className='cursor-pointer hover:scale-105'
                           src={Delete}
@@ -90,7 +111,7 @@ function Page() {
                           alt='Delete'
                         >
                         </Image>
-                        </Link>
+                        </button> 
                         </div>
                         
                           <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
