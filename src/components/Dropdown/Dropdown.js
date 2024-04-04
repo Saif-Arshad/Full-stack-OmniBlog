@@ -12,7 +12,7 @@ function Dropdown() {
       setIsOpen(false);
     }
   return (
-    <div className=' min-w-9 flex flex-col ml-16 sm:ml-32  md:ml-52 lg:ml-72 mt-4 '>
+    <div className=' min-w-4 flex flex-col mt-4 '>
           <button 
           id="dropdownDefaultButton" 
           onClick={toggleDropdown} 
@@ -27,7 +27,7 @@ function Dropdown() {
 
         <div 
           id="dropdown" 
-          className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+          className={`z-10 ${isOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 absolute rounded-lg top-16 shadow w-44 dark:bg-gray-700`}
         >
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
             <li>
