@@ -7,7 +7,6 @@ export default function Footer() {
   const today = currentYear > 2020 ? ` - ${currentYear}` : '';
 
   return (
-    <div>
       <footer>
         <div className="bg-white py-4 mt-9 text-black shadow-2xl">
           <div className="container px-4 mx-auto">
@@ -109,6 +108,5 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </div>
   );
 }

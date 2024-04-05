@@ -86,7 +86,7 @@ export default function Page() {
             <div>
             <label htmlFor="Main Image" className="text-sm mt-6 font-medium text-purple-800 block mb-2">Upload Main Image</label>
 
-            <div name="Mainimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 sm:max-w-full">
+            <div name="Mainimage" className=" max-w-xs cursor-pointer hover:scale-105 bg-black h-10 rounded-lg overflow-hidden w-13 sm:max-w-full">
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
@@ -127,7 +127,7 @@ export default function Page() {
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 block mb-2">Sub Image</label>
 
-            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
+            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-12 hover:scale-105 px-2 py-1 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
@@ -155,7 +155,7 @@ export default function Page() {
             </div>
               </div>
             ))}
-            <div className="p-6 border-t border-gray-200 rounded-b flex flex-wrap items-center justify-center">
+            <div className="p-6 border-t space-y-4 sm:space-y-0 border-gray-200 rounded-b flex flex-wrap items-center justify-center">
               <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" onClick={addSubtitleField}>Add Subtitle Field</button>
               <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center ml-4" type="submit">Create Article</button>
             </div>

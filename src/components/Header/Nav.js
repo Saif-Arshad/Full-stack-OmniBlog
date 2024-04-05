@@ -3,17 +3,25 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../../public/Images/Logo/icon.png'
+import { useTheme } from 'next-themes'
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  };
 
   return (
-    <div>
-      <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+      <nav className="bg-white border-gray-200 py-2.5 dark:bg-purple-800 ">
         <div className="flex flex-wrap flex-col sm:flex-row   items-center sm:justify-between justify-center max-w-screen-xl px-4 mx-auto">
           <Link href="/" >
           <span className="self-center flex items-center text-2xl font-bold whitespace-nowrap text-orange-500">
@@ -32,7 +40,6 @@ function Nav() {
             <div className="hidden mt-2 mr-4 sm:inline-block">
               <span></span>
             </div>
-
             <Link
               href="/admin"
               className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
@@ -79,6 +86,7 @@ function Nav() {
             } items-center justify-between w-full lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu-2"
           >
+
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <Link
@@ -88,6 +96,8 @@ function Nav() {
                   Home
                 </Link>
               </li>
+    <button onClick={toggleTheme} className='text-black dark:bg-bg-success '>theme</button>
+
               <li>
                     <Link
                      href="/catagorie?filter1=technology"
@@ -97,7 +107,7 @@ function Nav() {
                     <Link 
                    href="/catagorie?filter1=food&filter2=health"
 
-                        className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Food & Health</Link>
+                        className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-pink-600 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Food & Health</Link>
                 </li>
                 <li>
                     <Link 
@@ -110,7 +120,7 @@ function Nav() {
                     <Link
              href="/catagorie?filter1=news"
 
-                        className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">News</Link>
+                        className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 dark:hover:bg-pink-600 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">News</Link>
                 </li>
                 <li>
                     <Link
@@ -122,7 +132,6 @@ function Nav() {
           </div>
         </div>
       </nav>
-    </div>
   );
 }
 
