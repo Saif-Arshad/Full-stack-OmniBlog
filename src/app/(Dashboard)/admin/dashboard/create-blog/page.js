@@ -13,7 +13,7 @@ export default function Page() {
   const [Maincontent, setMaincontent] = useState("");
   const [Image, setImage] = useState("");
   const [subtitleFields, setSubtitleFields] = useState([{ subtitle: "", content: "", image: "" }]);
-
+  console.log(subtitleFields);
   const handleSubtitleChange = (index, key, value) => {
     const newSubtitleFields = [...subtitleFields];
     newSubtitleFields[index][key] = value;
@@ -98,6 +98,17 @@ export default function Page() {
                 }}
               />
             </div>
+            {Image ?     
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    className='mt-4'
+    src={Image}
+    height={200}
+    width={300}
+    alt='main image'
+  /> 
+  : null
+}
             </div>
             <div className="w-full max-w-xs my-4 sm:max-w-full">
               <label htmlFor="price" className="text-sm font-medium text-purple-800 block mb-2">Author name</label>
@@ -121,13 +132,26 @@ export default function Page() {
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
                   console.log("Files: ", res);
-                  setImage(res[0].url)
+                  const newSubtitleFields = [...subtitleFields];
+            newSubtitleFields[index].image = res[0].url;
+            setSubtitleFields(newSubtitleFields);
                 }}
                 onUploadError={(error) => {
                   console.log(`ERROR! ${error.message}`);
                 }}
               />
             </div>
+            {subtitleField.image ?     
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    className='mt-4'
+    src={subtitleField.image}
+    height={200}
+    width={300}
+    alt='main image'
+  /> 
+  : null
+}
             </div>
               </div>
             ))}

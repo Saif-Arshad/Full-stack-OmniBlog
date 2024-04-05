@@ -4,6 +4,7 @@ import AdminSideBar from '@/components/AdminSideBar';
 import { useEffect, useState } from 'react';
 import { UploadButton } from "@/utils/uploadthing";
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 function Page(params) {
   const id =  params.params.id;
@@ -30,6 +31,7 @@ function Page(params) {
           console.log("Error fetching data");
           return;
         }
+        console.log(data);
         setBlogData(data.blog || {});
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -45,24 +47,60 @@ function Page(params) {
     newSubContent[index][key] = value;
     setBlogData({...blogData, subContent: newSubContent});
   };
-
+  
   const addSubtitleField = () => {
-    setBlogData({...blogData, subContent: [...blogData.subContent, { subtitle: "", content: "", image: "" }]});
+    // Check if the last subcontent has been filled
+    const lastSubcontent = blogData.subContent[blogData.subContent.length - 1];
+    if (lastSubcontent.title || lastSubcontent.content || lastSubcontent.image) {
+      setBlogData({
+        ...blogData,
+        subContent: [
+          ...blogData.subContent,
+          { subtitle: "", content: "", image: "" }
+        ]
+      });
+    }
   };
+  
 
   const uploadImage = async (index, url) => {
     const newSubContent = [...blogData.subContent];
     newSubContent[index].image = url;
     setBlogData({...blogData, subContent: newSubContent});
   };
-
-  const creatingStart = async (e) => {
+  console.log(blogData.subContent);
+  const updatingStart = async (e) => {
     e.preventDefault();
     if(!blogData.title || !blogData.categorie || !blogData.author || !blogData.maincontent || !blogData.image || !blogData.subContent){
       alert("All fields are required");
       return;
     }
-    // Implement your logic for creating article here
+      try {
+        const currentid = blogData._id
+        console.log(currentid);
+        const res = await fetch(`/api/admin/blog/update-post?id=${currentid}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            title: blogData.title,
+        category: blogData.categorie,
+        Author: blogData.author,
+        Maincontent: blogData.maincontent,
+        Image: blogData.image,
+        subtitleFields: blogData.subContent
+          })
+        });
+        if (res.ok) {
+          console.log('successfully updated');
+          router.push('/admin/dashboard/all-posts');
+        
+        }
+        
+      } catch (error) {
+        console.log(error); 
+      }
   };
 
   return( 
@@ -73,7 +111,7 @@ function Page(params) {
           <h3 className="text-2xl text-purple-800 font-bold ">Update Article</h3>
         </div>
         <div className="p-6 space-y-6 flex flex-col">
-          <form onSubmit={creatingStart} className="flex flex-col items-center">
+          <form onSubmit={updatingStart} className="flex flex-col items-center">
             {/* Main Title Input */}
             <div className="w-full max-w-xs sm:max-w-full">
             <label htmlFor="product-name" className="text-sm font-medium text-purple-800 block mb-2">Main Title</label>
@@ -106,6 +144,16 @@ function Page(params) {
               onUploadError={(error) => console.error(`ERROR! ${error.message}`)}
             />
             </div>
+          <Image
+          className='mt-4'
+            src={blogData.image}
+            height={200}
+            width={300}
+            alt='main image'
+          >
+
+          </Image>
+            
             </div>
             
             {/* Author Name Input */}
@@ -121,49 +169,45 @@ function Page(params) {
 
             <textarea value={blogData.maincontent} onChange={(e) => setBlogData({...blogData, maincontent: e.target.value})} placeholder="Main Content" rows="3" className="bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" required></textarea>
             </div>
-            {/* {blogData.subContent.map((subtitleField, index) => (
-
-              <div key={index} className="flex flex-col items-center mt-4 w-full max-w-xs sm:max-w-full">
-                <label htmlFor={`subtitle-${index}`} className="text-sm font-medium text-purple-800 block mb-2">Sub Title</label>
-                <input type="text" value={subtitleField.subtitle} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} name={`subtitle-${index}`} id={`subtitle-${index}`} className="shadow-sm bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle" required="" />
-                <label htmlFor={`content-${index}`} className="text-sm font-medium text-purple-800 block mb-2 mt-4">Sub Content</label>
-                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} name={`content-${index}`} id={`content-${index}`} className="bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Subtitle Content" required="" />
-                <div className='flex flex-col items-center'>
-            <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 block mb-2">Sub Image</label>
-
-            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
-              <UploadButton
-                endpoint="imageUploader"
-                onClientUploadComplete={(res) => {
-                  console.log("Files: ", res);
-                  setImage(res[0].url)
-                }}
-                onUploadError={(error) => {
-                  console.log(`ERROR! ${error.message}`);
-                }}
-              />
-            </div>
-            </div>
-              </div>
-            ))}
-
-             */}
         
             {/* Subtitle Fields (Dynamic) */}
             {blogData.subContent.map((subtitleField, index) => (
-              <div key={index} className="flex w-full" >
-                <input type="text" value={subtitleField.subtitle} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} placeholder="Subtitle" required />
-                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} placeholder="Subtitle Content" required></textarea>
+              <div key={index} className="flex flex-col items-center mt-4 w-full max-w-xs sm:max-w-full" >
+                <label htmlFor={`subtitle-${index}`} className="text-sm font-medium text-purple-800 block mb-2">Sub Title</label>
+              
+                <input type="text" value={subtitleField.title} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} className="shadow-sm bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle" required />
+                <label htmlFor={`content-${index}`} className="text-sm font-medium text-purple-800 block mb-2 mt-4">Sub Content</label>
+           
+                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} placeholder="Subtitle Content" className="bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" required></textarea>
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 block mb-2">Sub Image</label>
-            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-10 rounded-lg overflow-hidden w-13 mb-6  sm:max-w-full">
-                
+            <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-12 rounded-lg overflow-hidden w-13 mb-6 p-1  sm:max-w-full">
+
                 <UploadButton
                   endpoint="imageUploader"
                   onClientUploadComplete={(res) => uploadImage(index, res[0].url)}
                   onUploadError={(error) => console.error(`ERROR! ${error.message}`)}
                 />
               </div>
+              {subtitleField.image ? 
+  <Image
+  className='mt-4'
+    src={subtitleField.image}
+    height={200}
+    width={300}
+    alt='Sub image'
+  >
+  </Image> 
+: ""}
+
+          {/* <Image
+            src={subtitleField.image}
+            height={200}
+            width={300}
+            alt='main image'
+          >
+
+          </Image> */}
               </div>
               </div>
             ))}
@@ -173,7 +217,7 @@ function Page(params) {
             <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" onClick={addSubtitleField}>Add Subtitle Field</button>
             
             {/* Submit Button */}
-            <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Create Article</button>
+            <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Update Article</button>
             </div>
               
           </form>
