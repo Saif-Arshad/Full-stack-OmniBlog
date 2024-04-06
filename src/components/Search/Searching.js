@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 function Searching() {
     const [search,setsearch] = useState("")
      const router = useRouter()
@@ -16,9 +16,9 @@ function Searching() {
     }
     console.log(search);
   return (
-    <div className='bg-white dark:bg-gray-900 py-10 px-6 md:py-20 md:px-20 ' >
-            <h1 className='font-semibold text-xl md:text-4xl md:font-bold'>Discover latest Aticles on OnmiBlog</h1>
-            <p className='mt-8 text-black dark:text-gray-200 w-4/4 sm:w-3/4 md:w-2/4 text-sm md:text-lg' >All the article show here and you can find the article you want Quickly using search option</p>
+    <div className='bg-white dark:bg-gray-900 py-5 px-6 md:py-14 md:px-20 ' >
+            <h1 className='font-semibold text-xl md:text-5xl md:font-bold'>Discover latest Aticles on OnmiBlog</h1>
+            <p className='mt-4 sm:mt-8 text-black dark:text-gray-200 w-4/4 sm:w-3/4 md:w-2/4 text-sm md:text-xl' >All the article show here and you can find the article you want Quickly using search option</p>
         <div className='mt-4'>
             
 <form className="max-w-md" onSubmit={submitSearch}>   
@@ -34,13 +34,13 @@ function Searching() {
     </div>
 </form>
 
-        <div className="links text-sm mt-6 ">
- <Link href={"/"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>All</button></Link>
- <Link href={"/catagorie?filter1=technology"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>Technology</button></Link>
- <Link href={"/catagorie?filter1=food&filter2=health"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>Food & Health</button></Link>
- <Link href={"/catagorie?filter1=movie&filter2=sport"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>Movie & Sports</button></Link>
- <Link href={"/catagorie?filter1=news"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>News</button></Link>
- <Link href={"/catagorie?filter1=fashion&filter2=lifestyle"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-2 px-2'>Fashion & Lifestyle</button></Link>
+        <div className="links text-sm mt-3 sm:mt-6 ">
+ <Link href={"/"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>All</button></Link>
+ <Link href={"/catagorie?filter1=technology"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Technology</button></Link>
+ <Link href={"/catagorie?filter1=food&filter2=health"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Food & Health</button></Link>
+ <Link href={"/catagorie?filter1=movie&filter2=sport"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Movie & Sports</button></Link>
+ <Link href={"/catagorie?filter1=news"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>News</button></Link>
+ <Link href={"/catagorie?filter1=fashion&filter2=lifestyle"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Fashion & Lifestyle</button></Link>
 
 
         </div>
