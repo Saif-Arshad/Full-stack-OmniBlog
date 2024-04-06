@@ -1,11 +1,10 @@
 "use client";
- import '@/app/Stylesheets/Home.scss'
+//  import '@/app/Stylesheets/Home.scss'
+import Searching from '@/components/Search/Searching';
 export default function Home() {
   return (
     <>
-      <div className="main-hero">
-          <h1 className='dark:text-purple-400' >Hello</h1>
-      </div>
+         <Searching/>
     </>
   );
 }

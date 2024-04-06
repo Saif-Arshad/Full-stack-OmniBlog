@@ -4,7 +4,7 @@ import Nav from "@/components/Header/Nav";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
-import { ThemeProvider } from "next-themes";
+import  {Providers}  from "../provider";
 
 export const metadata = {
   title: "The Omni Blog",
@@ -15,14 +15,15 @@ export default function RootLayout({ children}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider>
       <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
+        <Providers>
+
         <Nav/>
         {children}
         <Footer/>
-        </ThemeProvider>
+        </Providers>
         </body>
     </html>
   );

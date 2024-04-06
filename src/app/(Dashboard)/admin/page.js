@@ -5,7 +5,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Loader from '@/components/Loader/loader'
-function page() {
+function page(name=true) {
   const [Fname,setFname] = useState("")
   const [Lname,setLname] = useState("")
   const [Email,setEmail] = useState("")
