@@ -5,7 +5,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Loader from '@/components/Loader/loader'
-function page(name=true) {
+import Nav from '@/components/Header/Nav'
+function page(name) {
   const [Fname,setFname] = useState("")
   const [Lname,setLname] = useState("")
   const [Email,setEmail] = useState("")
@@ -41,6 +42,8 @@ function page(name=true) {
   }
 
   return (
+    <>
+    <Nav name="true" />
     <div className='flex w-screen justify-center bg-white dark:bg-slate-900 py-9' >
       <form onSubmit={adminlogin}  >
       <div className="flex flex-col items-center justify-center px-6 py-2 mx-auto lg:py-0">
@@ -84,6 +87,7 @@ function page(name=true) {
       </div></form>
     
     </div>
+    </>
   )
 }
 

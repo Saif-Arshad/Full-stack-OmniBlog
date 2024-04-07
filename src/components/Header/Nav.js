@@ -34,7 +34,7 @@ function Nav(props) {
           </Link>
           <div className="flex items-center gap-x-8 mt-5 ml-2  sm:gap-x-0 sm:mt-0 sm:ml-0 lg:order-2">
           <div className=" flex justify-center items-center ">
-          {props.home ? 
+          {props.name === "true"? 
             <Link
             href="/"
             className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800"
