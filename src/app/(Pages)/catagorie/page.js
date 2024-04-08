@@ -4,11 +4,16 @@ import React, { useEffect,useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Searching from '@/components/Search/Searching'
+import Dummy from '../../../../public/Images/Dummy/download.jpg'
+import '@/app/Stylesheets/Home.scss';
+import Link from 'next/link'
+
 function page() {
   const param = useSearchParams();
   const urlDataone= param.get('filter1');
   const urlDatatwo= param.get('filter2');
   const [data, setdata]=useState([]);
+  const [load,setload] = useState(6)
   console.log(urlDataone);
   console.log(urlDatatwo);
   
@@ -30,41 +35,66 @@ function page() {
 
     fetchData();
   }, [urlDataone, urlDatatwo])
+  const loadmore = () => {
+    setload(load + 6)
+  }
+
   return (
     <>
-      <Searching />
-      <div className='bg-white dark:bg-slate-900 flex flex-row flex-wrap justify-center gap-4'>
-        {data.map((blog) => (
-          <div key={blog._id} className="max-w-sm w-full md:w-1/3 bg-white border border-gray-200 rounded-xl dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-              <img
-                className="w-full object-contain h-36"
-                src={`${blog.image}`}
-                alt={`${blog.title}`}
+    <Searching />
 
-              />
+    <div className='bg-white dark:bg-slate-900 main-hero'>
+      {data.slice(0,load).map((blog) => (
+        <div key={blog._id} className="main-card">
+          <a href="#">
+            <Image
+              className="main-image"
+              src={`${blog.image}`}
+              alt={`${blog.title}`}
+              width={500}
+              height={144}
+            />
+          </a>
+         
+          <div className="p-5">
+          <span className='text-lg capitalize font-bold text-purple-700 dark:text-blue-600'>{blog.categorie}</span>
+
+            <a href="#">
+              <h5 className="mb-2 text-lg sm:text-xl  hover:text-blue-500 hover:underline capitalize font-semibold mt-4 tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
             </a>
-            <div className='flex flex-wrap items-center justify-between px-5'>
-              <span>{blog.categorie}</span>
-            </div>
-            <div className="p-5">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
-              </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 50)}...` : blog.maincontent}
-              </p>
-              <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Read more
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </a>
-            </div>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 90)}...` : blog.maincontent}
+            </p>
+            
+            <div className='flex flex-wrap gap-1 mt-6 items-center text-purple-800 dark:text-blue-700 font-semibold'>
+                <Image 
+                className='rounded-xl'
+                src={Dummy}
+                  height={20}
+                  width={25}
+                  alt={blog.author}
+                >
+
+                </Image>
+              {blog.author}</div>
+            <Link href="#" className=" inline-flex items-center px-3 py-2 mt-5 text-lg font-semibold hover:underline text-center text-black hover:text-blue-950 dark:text-white ">
+              Read more
+              <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+              </svg>
+            </Link>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
+    {data.length > load && (
+              <div className="flex justify-center py-8 bg-white dark:bg-slate-900">
+                <button onClick={loadmore} className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">
+                  Load More Articles
+                </button>
+              </div>
+            )}
+  </>
   )
 }
 
