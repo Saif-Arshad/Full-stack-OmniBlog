@@ -27,7 +27,7 @@ function page() {
           console.log(('Failed to fetch data'));
         }
         const filter = await response.json();
-        setdata(filter.all);
+        setdata(filter.all.reverse());
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -46,7 +46,7 @@ function page() {
     <div className='bg-white dark:bg-slate-900 main-hero'>
       {data.slice(0,load).map((blog) => (
         <div key={blog._id} className="main-card">
-          <a href="#">
+          <Link href={`/blog/${blog._id}`}>
             <Image
               className="main-image"
               src={`${blog.image}`}
@@ -54,7 +54,7 @@ function page() {
               width={500}
               height={144}
             />
-          </a>
+          </Link>
          
           <div className="p-5">
           <span className='text-lg capitalize font-bold text-purple-700 dark:text-blue-600'>{blog.categorie}</span>

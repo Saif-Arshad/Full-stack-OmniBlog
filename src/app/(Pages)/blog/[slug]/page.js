@@ -1,24 +1,25 @@
 'use client'
 import { useParams } from 'next/navigation';
-// import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 
 function Page() {
   const params = useParams();
+  const [data,setdata] = useState([]);
 
-// useEffect(() => {
-//   const gettingArticles = async ()=>{
-//     const filter= await fetch(`/api/admin/blog/filtering/${params.slug}`)
-//     const filteredData = await filter.json();
-//     console.log(filteredData);
+useEffect(() => {
+  const gettingArticles = async ()=>{
+    const filter= await fetch(`/api/blogdata?id=${params.slug}`)
+    const filteredData = await filter.json();
+    console.log(filteredData);
+    setdata(filteredData.blog)
  
-// }
-// gettingArticles();
-// }, [params])
+}
+gettingArticles();
+}, [params])
 
     return( 
-      <div className='flex sm:ml-64'>
-
-    <p>This Blog Page is about <span className='bg-gray-50 text-3xl'>{params.slug}</span> </p>
+      <div className='flex w-full bg-white dark:bg-slate-900'>
+   
       </div>
   
     )

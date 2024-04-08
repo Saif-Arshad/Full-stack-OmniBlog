@@ -3,6 +3,7 @@
 import AdminSideBar from '@/components/AdminSideBar'
 import React ,{useEffect,useState} from 'react'
 import Greeting from '@/components/Greeting/Greeting'
+import Link from 'next/link'
 import { CiBullhorn } from "react-icons/ci";
 import { MdPostAdd } from "react-icons/md";
 function page() {
@@ -63,7 +64,10 @@ console.log(latest);
     <div className='py-6'>
         {
               latest.slice(0, 8).map((titles, index) => (
+            // eslint-disable-next-line react/jsx-key
+            <Link href={`/blog/${titles._id}`}>
                 <h2 className='font-normal text-sm sm:text-lg mt-1 hover:text-purple-600 dark:hover:text-orange-400 underline underline-offset-1 cursor-pointer' key={index}>{titles.title}</h2>
+             </Link>
               ))
             }
             </div>

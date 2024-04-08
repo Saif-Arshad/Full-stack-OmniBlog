@@ -131,7 +131,7 @@ function Page() {
             Delete
                       </button> 
             </div>
-         <Link href={"/"}>  <span className="flex items-center justify-start font-semibold text-blue-950 dark:text-purple-500">
+         <Link href={`/blog/${data._id}`}>  <span className="flex items-center justify-start font-semibold text-blue-950 dark:text-purple-500">
               Read more <AiOutlineArrowRight size={17} className='ml-1' />
              
             </span>
