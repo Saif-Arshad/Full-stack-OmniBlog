@@ -15,7 +15,9 @@ function page() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/filterblog?filter1=${urlDataone}&filter2=${urlDatatwo}`);
+        const response = await fetch(`/api/filterblog?filter1=${urlDataone}&filter2=${urlDatatwo}`,{
+          cache: 'no-store',
+        });
         if (!response.ok) {
           console.log(('Failed to fetch data'));
         }

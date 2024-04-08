@@ -9,7 +9,9 @@ export default function Home() {
 
   useEffect(() => {
     const fetching = async () => {
-      const res = await fetch('/api/fetchblog');
+      const res = await fetch('/api/fetchblog',{
+        cache: 'no-store',
+      });
       const Blogdata = await res.json();
       setData(Blogdata.res)
     };

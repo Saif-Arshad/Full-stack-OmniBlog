@@ -25,6 +25,7 @@ function page(name) {
       try {
       const res = await fetch("api/admin/login", {
         method: 'POST',
+        cache: 'no-store',
         headers: {
           "content-Type": "application/json"
         },

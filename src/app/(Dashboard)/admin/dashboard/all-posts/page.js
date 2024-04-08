@@ -5,30 +5,55 @@ import Dropdown from '@/components/Dropdown/Dropdown';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import Pencil from '../../../../../../public/Images/SVG/pencil-svgrepo-com.svg'
-import Delete from '../../../../../../public/Images/SVG/delete-svgrepo-com.svg'
+import { BsPencilFill } from "react-icons/bs";
+import { AiOutlineDelete,AiOutlineArrowRight } from "react-icons/ai";
 
 function Page() {
   const searchParams = useSearchParams();
   const blogUrl = searchParams.get('blog');
   const [Data, setData] = useState([]);
+  const [showCount, setShowCount] = useState(6);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`/api/admin/blog/filtering?blog=${blogUrl}`);
-        if (!response.ok) {
-          console.log('Failed to fetch data');
-          return;
+    if (blogUrl) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`/api/admin/blog/filtering?blog=${blogUrl}`,{
+            cache: 'no-store',
+          });
+          if (!response.ok) {
+            console.log('Failed to fetch data');
+            return;
+          }
+          const filter = await response.json();
+          setData(filter.all);
+        } catch (error) {
+          console.error('Error fetching data:', error);
         }
-        const filter = await response.json();
-        setData(filter.all);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+      };
+  
+      fetchData();
+    }
+    else{
+      const fetchall = async () => {
+        try {
+          const response = await fetch(`/api/fetchblog`,{
+            cache: 'no-store',
+          });
+          if (!response.ok) {
+            console.log('Failed to fetch data');
+            return;
+          }
+          const filter = await response.json();
+          setData(filter.res.reverse());
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchall();
+    }
+   
   }, [blogUrl]);
 
   useEffect(() => {
@@ -41,6 +66,7 @@ function Page() {
     if (confirming) {
       const response = await fetch(`/api/admin/blog/deleteing?id=${id}`, {
         method: 'DELETE',
+        cache: 'no-store',
       });
       if (response.ok) {
         window.location.reload();
@@ -54,95 +80,82 @@ function Page() {
   }
 
 
+  const loadMore = () => {
+    setShowCount(showCount + 6);
+  };
 
   return (
-    <div className="flex sm:ml-64">
+    <div className="flex min-h-screen sm:ml-64 bg-white dark:bg-slate-800">
       <AdminSideBar />
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col ">
+        <div className='flex flex-wrap items-center justify-center'>
         <Dropdown />
-        {
-          Data.length === 0 ? (
-            <div className="flex justify-center items-center h-screen">
-              <p className="text-2xl font-bold">Select Catagories to see Posts</p>
-            </div>
-          ) :
-          <div>
-          <section className="text-gray-600 body-font">
-            <div className="container px-5 py-12 mx-auto">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {Data.map((data) => (
-                  <div key={data._id} className="p-4">
-                    <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                      <Image
-                        height={722}
-                        width={402}
-                        className="lg:h-48 md:h-36 w-full object-contain object-center"
-                        src={data.image}
-                        alt={data.title}
-                      />
-                      <div className="p-6">
-                        <h2 className="tracking-widest text-xs title-font font-medium capitalize text-gray-400 mb-1">
-                          {data.categorie}
-                        </h2>
-                        <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{data.title}</h1>
-                        <p className="leading-relaxed mb-3">
-                          {data.maincontent.length > 150 ? `${data.maincontent.substring(0, 50)}...` : data.maincontent}
-                        </p>
-                        <div className="flex items-center flex-wrap flex-col">
-                        <div className='flex mb-5 justify-between w-1/3'>
-                    <Link
-                      href={`/admin/dashboard/edit-blog/${data._id}`}
-                    >
-                        <Image
-                        className='cursor-pointer hover:scale-105'
-                          src={Pencil}
-                          height={20}
-                          width={30}
-                          alt='Edit'
-                        >
-                        </Image>
-                        </Link>
-                   <button onClick={()=>DeleteNow(data._id)} className='bg-transparent border-none'>
-                        <Image
-                        className='cursor-pointer hover:scale-105'
-                          src={Delete}
-                          height={40}
-                          width={30}
-                          alt='Delete'
-                        >
-                        </Image>
-                        </button> 
-                        </div>
-                        
-                          <a className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">
-                            Read More
-                            <svg
-                              className="w-4 h-4 ml-2"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              fill="none"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <path d="M5 12h14"></path>
-                              <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                          </a>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
         </div>
-        }
-     
+          <div className='w-full'>
+          <section className="text-gray-600 body-font">
+          <div className="container px-5 py-12 mx-auto">
+  <div className="flex flex-wrap gap-4 justify-center">
+    {Data.slice(0,showCount).map((data, index) => (
+      <div key={index} className="w-full sm:w-auto">
+        <div className="flex flex-col bg-white border dark:bg-gray-800 border-gray-300 rounded-xl overflow-hidden">
+            <div className="relative w-full h-32 flex-shrink-0">
+            <Image
+              className="absolute inset-0 w-full h-full object-cover"
+              src={data.image}
+              alt={data.title}
+              height={100}
+              width={200}
+            />
+          </div>
+          <div className='flex justify-around'>
+          <h3 className='ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.categorie}</h3>
+          <h3 className='ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.author}</h3>
+          </div>
+
+          <div className="flex flex-col gap-2 p-4">
+            <p className="text-fw-normal  sm:text-xl font-bold text-black dark:text-white capitalize">{data.title}</p>
+            <p className="text-gray-500 dark:text-white">
+                  {data.maincontent.length > 150 ? `${data.maincontent.substring(0, 60)}...` : data.maincontent}
+         
+            </p>
+            <div className='flex space-x-4 flex-wrap  justify-center'>
+            <Link href={`/admin/dashboard/edit-blog/${data._id}`} >
+              <button className='flex items-center text-lg font-semibold text-purple-600 dark:text-pink-500'>
+            <BsPencilFill size={16} />
+            Edit
+            </button>
+                        </Link>
+                           
+                   <button onClick={()=>DeleteNow(data._id)} className= 'flex items-center text-lg font-semibold text-purple-600 dark:text-pink-500'>
+                   <AiOutlineDelete size={16} />
+            Delete
+                      </button> 
+            </div>
+         <Link href={"/"}>  <span className="flex items-center justify-start font-semibold text-blue-950 dark:text-purple-500">
+              Read more <AiOutlineArrowRight size={17} className='ml-1' />
+             
+            </span>
+            </Link> 
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    ))}
+  </div>
+  {Data.length > showCount && (
+                <div className="flex justify-center mt-4">
+                  <button onClick={loadMore} className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">
+                    Load More
+                  </button>
+                </div>
+              )}
+</div>
+</section>
+</div>
+</div>
+</div>
+)
 }
 
 export default Page;
+
+                 
