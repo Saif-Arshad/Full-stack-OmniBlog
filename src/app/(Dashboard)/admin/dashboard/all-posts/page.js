@@ -5,6 +5,7 @@ import Dropdown from '@/components/Dropdown/Dropdown';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import Loading from '@/components/Loading';
 import { BsPencilFill } from "react-icons/bs";
 import { AiOutlineDelete,AiOutlineArrowRight } from "react-icons/ai";
 
@@ -13,6 +14,7 @@ function Page() {
   const blogUrl = searchParams.get('blog');
   const [Data, setData] = useState([]);
   const [showCount, setShowCount] = useState(4);
+  const [loading,setloading] = useState(true)
 
   useEffect(() => {
     if (blogUrl) {
@@ -21,12 +23,14 @@ function Page() {
           const response = await fetch(`/api/admin/blog/filtering?blog=${blogUrl}`,{
             cache: 'no-store',
           });
+          
           if (!response.ok) {
             console.log('Failed to fetch data');
             return;
           }
           const filter = await response.json();
           setData(filter.all);
+          setloading(false)
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -46,6 +50,8 @@ function Page() {
           }
           const filter = await response.json();
           setData(filter.res.reverse());
+          setloading(false)
+
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -94,6 +100,7 @@ function Page() {
           <div className='w-full'>
           <section className="text-gray-600 body-font">
           <div className="container px-5 py-12 mx-auto">
+      {loading ? <Loading /> :   
   <div className="flex flex-wrap gap-4 justify-center">
     {Data.slice(0,showCount).map((data, index) => (
       <div key={index} className="w-full sm:w-auto">
@@ -141,6 +148,7 @@ function Page() {
       </div>
     ))}
   </div>
+  }  
   {Data.length > showCount && (
                 <div className="flex justify-center mt-4">
                   <button onClick={loadMore} className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">

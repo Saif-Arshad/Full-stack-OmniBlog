@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Searching from '@/components/Search/Searching';
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
+import Loading from '@/components/Loading';
 import '@/app/Stylesheets/Home.scss';
 import { useSearchParams } from 'next/navigation';
 export default function page() {
@@ -13,6 +14,8 @@ export default function page() {
   console.log(searchURL);
    const [data,setdata] = useState([])
   const [load,setload] = useState(6)
+  const [loading,setloading]=useState(true)
+
   useEffect(() => {
     try {
       const fetchSearch = async () => {
@@ -22,6 +25,7 @@ export default function page() {
         const serverData =await res.json()
         const searchdata = serverData.searchAnswer
         setdata(searchdata)
+        setloading(false)
       }
 
         fetchSearch()
@@ -36,7 +40,7 @@ export default function page() {
   return (
     <>
       <Searching />
-
+    {loading? <Loading /> : 
       <div className='bg-white dark:bg-slate-900 main-hero'>
         {data.slice(0,load).map((blog) => (
           <div key={blog._id} className="main-card">
@@ -81,6 +85,7 @@ export default function page() {
           </div>
         ))}
       </div>
+      }
       {data.length > load && (
                 <div className="flex justify-center py-8 bg-white dark:bg-slate-900">
                   <button onClick={loadmore} className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">

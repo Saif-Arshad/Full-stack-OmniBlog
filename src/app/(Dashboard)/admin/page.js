@@ -34,12 +34,12 @@ function page(name) {
         })
       })  
       router.push("/admin/dashboard");
+    setProcessing(false)
+
      } catch (error) {
           console.log(error);
   }
-  finally{
-    setProcessing(false)
-  }
+
   }
 
   return (

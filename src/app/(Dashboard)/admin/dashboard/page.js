@@ -5,10 +5,13 @@ import React ,{useEffect,useState} from 'react'
 import Greeting from '@/components/Greeting/Greeting'
 import Link from 'next/link'
 import { CiBullhorn } from "react-icons/ci";
+import Loading from '@/components/Loading'
 import { MdPostAdd } from "react-icons/md";
 function page() {
   const [latest,setlatest] =useState([])
+  const[loading,setloading] = useState(true)
 useEffect(()=>{
+  // setloading(true)
   const fetchingLatese= async ()=>{
     const data = await fetch('/api/fetchblog',{
       cache: 'no-store',
@@ -16,6 +19,7 @@ useEffect(()=>{
     const response = await data.json();
     const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
     setlatest(sortedLatest)
+    setloading(false)
   }
   fetchingLatese()
 },[])
@@ -30,6 +34,7 @@ console.log(latest);
     <h1 className='text-2xl sm:text-4xl font-bold'>Welcome back Admin 👋</h1>
       <Greeting/>
 </div>
+      {loading ? <Loading/> :
     <div className="DashMain flex flex-col flex-wrap sm:flex-row mt-8">
      <div className="sub w-full lg:w-1/2  flex flex-row flex-wrap justify-center">
     <div className=" rounded-[25px] shadow-lg ml-0 md:ml-3 bg-white p-8 w-44 h-48 mt-4 dark:bg-gray-600">
@@ -74,7 +79,7 @@ console.log(latest);
     </div>
     </div>
 
-       
+          }
        
         </div>
 

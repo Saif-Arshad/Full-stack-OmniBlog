@@ -4,6 +4,7 @@ import AdminSideBar from '@/components/AdminSideBar';
 import { useEffect, useState } from 'react';
 import { UploadButton } from "@/utils/uploadthing";
 import { useRouter } from 'next/navigation';
+import Loading from '@/components/Loading';
 import Image from 'next/image';
 
 function Page(params) {
@@ -18,7 +19,7 @@ function Page(params) {
     image: "",
     subContent: [{ subtitle: "", content: "", image: "" }]
   });
-
+  const [loading,setloading]=useState(true)
   useEffect(() => {
     const gettingArticles = async () => {
       try {
@@ -33,6 +34,7 @@ function Page(params) {
         }
         console.log(data);
         setBlogData(data.blog || {});
+        setloading(false)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -106,6 +108,7 @@ function Page(params) {
   return( 
     <div className='flex sm:ml-64'>
       <AdminSideBar/>        
+      {loading ? <Loading className="w-full"/> :
       <div className="flex flex-col items-center w-screen">
         <div className="flex items-start justify-between p-5 border-b-2  rounded-t">
           <h3 className="text-2xl text-purple-800 dark:text-orange-500  font-bold  ">Update Article</h3>
@@ -223,6 +226,7 @@ function Page(params) {
           </form>
         </div>
       </div>
+       }
     </div>
   );
 }

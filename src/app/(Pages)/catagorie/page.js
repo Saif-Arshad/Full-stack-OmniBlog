@@ -7,6 +7,7 @@ import Searching from '@/components/Search/Searching'
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
 import '@/app/Stylesheets/Home.scss';
 import Link from 'next/link'
+import Loading from '@/components/Loading'
 
 function page() {
   const param = useSearchParams();
@@ -14,6 +15,8 @@ function page() {
   const urlDatatwo= param.get('filter2');
   const [data, setdata]=useState([]);
   const [load,setload] = useState(6)
+  const [loading,setloading]=useState(true)
+
   console.log(urlDataone);
   console.log(urlDatatwo);
   
@@ -28,6 +31,7 @@ function page() {
         }
         const filter = await response.json();
         setdata(filter.all.reverse());
+        setloading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -42,7 +46,7 @@ function page() {
   return (
     <>
     <Searching />
-
+    {loading ? <Loading/> :
     <div className='bg-white dark:bg-slate-900 main-hero'>
       {data.slice(0,load).map((blog) => (
         <div key={blog._id} className="main-card">
@@ -59,9 +63,9 @@ function page() {
           <div className="p-5">
           <span className='text-lg capitalize font-bold text-purple-700 dark:text-blue-600'>{blog.categorie}</span>
 
-            <a href="#">
+            <Link href={`/blog/${blog._id}`}>
               <h5 className="mb-2 text-lg sm:text-xl  hover:text-blue-500 hover:underline capitalize font-semibold mt-4 tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
-            </a>
+            </Link>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 90)}...` : blog.maincontent}
             </p>
@@ -77,7 +81,7 @@ function page() {
 
                 </Image>
               {blog.author}</div>
-            <Link href="#" className=" inline-flex items-center px-3 py-2 mt-5 text-lg font-semibold hover:underline text-center text-black hover:text-blue-950 dark:text-white ">
+            <Link href={`/blog/${blog._id}`} className=" inline-flex items-center px-3 py-2 mt-5 text-lg font-semibold  text-center text-black hover:text-blue-950 dark:text-white ">
               Read more
               <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -87,6 +91,7 @@ function page() {
         </div>
       ))}
     </div>
+}
     {data.length > load && (
               <div className="flex justify-center py-8 bg-white dark:bg-slate-900">
                 <button onClick={loadmore} className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:bg-purple-700">
