@@ -58,12 +58,12 @@ console.log(latest);
     
 
 </div>
-    <div className='sub ml-8 lg:ml-0 '>
+    <div className='sub ml-8 lg:ml-0'>
       <h1 className='font-bold text-xl mt-5 sm:text-2xl text-purple-600 dark:text-orange-500'>Latest Articles</h1>
     <div className='py-6'>
         {
               latest.slice(0, 8).map((titles, index) => (
-                <h2 className='font-normal text-sm sm:text-lg mt-1 hover:text-purple-600 dark:hover:text-orange-400 hover:underline cursor-pointer' key={index}>{titles.title}</h2>
+                <h2 className='font-normal text-sm sm:text-lg mt-1 hover:text-purple-600 dark:hover:text-orange-400 underline underline-offset-1 cursor-pointer' key={index}>{titles.title}</h2>
               ))
             }
             </div>

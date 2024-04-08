@@ -12,7 +12,7 @@ function Page() {
   const searchParams = useSearchParams();
   const blogUrl = searchParams.get('blog');
   const [Data, setData] = useState([]);
-  const [showCount, setShowCount] = useState(6);
+  const [showCount, setShowCount] = useState(4);
 
   useEffect(() => {
     if (blogUrl) {
@@ -81,7 +81,7 @@ function Page() {
 
 
   const loadMore = () => {
-    setShowCount(showCount + 6);
+    setShowCount(showCount + 4);
   };
 
   return (
@@ -120,13 +120,13 @@ function Page() {
             </p>
             <div className='flex space-x-4 flex-wrap  justify-center'>
             <Link href={`/admin/dashboard/edit-blog/${data._id}`} >
-              <button className='flex items-center text-lg font-semibold text-purple-600 dark:text-pink-500'>
+              <button className='flex items-center text-lg font-semibold text-purple-600 dark:text-white'>
             <BsPencilFill size={16} />
             Edit
             </button>
                         </Link>
                            
-                   <button onClick={()=>DeleteNow(data._id)} className= 'flex items-center text-lg font-semibold text-purple-600 dark:text-pink-500'>
+                   <button onClick={()=>DeleteNow(data._id)} className= 'flex items-center text-lg font-semibold text-purple-600 dark:text-white'>
                    <AiOutlineDelete size={16} />
             Delete
                       </button> 

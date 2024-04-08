@@ -3,5 +3,19 @@
     padding: 0%;
 }
 .main-hero{
-    height: 55vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+ .main-card{
+    width: 28rem;
+    // background: #000;
+    .main-image{
+        object-fit: cover;
+        height: 12rem;
+        border-radius: 10px;
+    }
+}
+
 }

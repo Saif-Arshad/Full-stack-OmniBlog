@@ -68,11 +68,11 @@ export default function Page() {
           <form onSubmit={creatingStart} className="flex flex-col items-center">
             <div className="w-full max-w-xs sm:max-w-full">
               <label htmlFor="product-name" className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Main Title</label>
-              <input type="text" onChange={(e) => setTitle(e.target.value)} name="title" id="product-name" className="shadow-sm bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Title here" required />
+              <input type="text" onChange={(e) => setTitle(e.target.value)} name="title" id="product-name" className="shadow-sm bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Title here" required />
             </div>
             <div className="w-full mt-4 max-w-xs sm:max-w-full">
               <label htmlFor="category" className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Category</label>
-              <select value={category} onChange={(e) => setCategory(e.target.value)} name="category" id="category" className="shadow-sm bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+              <select value={category} onChange={(e) => setCategory(e.target.value)} name="category" id="category" className="shadow-sm bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
                 <option value="">Select Category</option>
                 <option value="technology">Technology</option>
                 <option value="food">Food</option>
@@ -113,18 +113,18 @@ export default function Page() {
             </div>
             <div className="w-full max-w-xs my-4 sm:max-w-full">
               <label htmlFor="price" className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Author name</label>
-              <input type="text" onChange={(e) => setAuthor(e.target.value)} name="price" id="price" className="shadow-sm bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="David" required="" />
+              <input type="text" onChange={(e) => setAuthor(e.target.value)} name="price" id="price" className="shadow-sm bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="David" required="" />
             </div>
             <div className="w-full max-w-xs sm:max-w-full">
               <label htmlFor="Main content" className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Main Content</label>
-              <textarea id="Main content" onChange={(e) => setMaincontent(e.target.value)} rows="3" className="bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Content"></textarea>
+              <textarea id="Main content" onChange={(e) => setMaincontent(e.target.value)} rows="3" className="bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Content"></textarea>
             </div>
             {subtitleFields.map((subtitleField, index) => (
               <div key={index} className="flex flex-col items-center mt-4 w-full max-w-xs sm:max-w-full">
                 <label htmlFor={`subtitle-${index}`} className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Sub Title</label>
-                <input type="text" value={subtitleField.subtitle} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} name={`subtitle-${index}`} id={`subtitle-${index}`} className="shadow-sm bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle" required="" />
+                <input type="text" value={subtitleField.subtitle} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} name={`subtitle-${index}`} id={`subtitle-${index}`} className="shadow-sm bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle" required="" />
                 <label htmlFor={`content-${index}`} className="text-sm font-medium text-purple-800 dark:text-white  block mb-2 mt-4">Sub Content</label>
-                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} name={`content-${index}`} id={`content-${index}`} className="bg-gray-50 dark:bg-gray-400  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Subtitle Content" required="" />
+                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} name={`content-${index}`} id={`content-${index}`} className="bg-gray-50 dark:bg-gray-800  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Subtitle Content" required="" />
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 dark:text-white  block mb-2">Sub Image</label>
 
