@@ -10,6 +10,7 @@ import { MdAddBox } from "react-icons/md";
 import { TbLayoutDashboard } from "react-icons/tb";
 import { BsDatabaseFillDown } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
+import { BsFillSunFill } from "react-icons/bs";
 
 function AdminSideBar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -29,20 +30,20 @@ try {
     setSidebarOpen(!sidebarOpen);
   };
   const { theme, setTheme } = useTheme()
-  const toggleTheme = () => {
-    if (theme === 'dark') {
-      setTheme('light');
-    } else {
-      setTheme('dark');
-    }
-  };
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Function to toggle dropdown
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
+  const darkmode = ()=>{
+    setTheme("dark");
+    setDropdownOpen(false);
+  }
+  const lightmode = ()=>{
+    setTheme("light");
+    setDropdownOpen(false);
+  }
   return (
     <>
       {sidebarOpen && window.innerWidth <= 640 && ( 
@@ -62,7 +63,7 @@ try {
       </button>
 
       <aside id="default-sidebar" className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${sidebarOpen ? '' : '-translate-x-full'} sm:translate-x-0`} aria-label="Sidebar">
-         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-900">
          <Link href="/" >
           <span className="self-center ml-4 py-6 flex items-center text-2xl font-bold whitespace-nowrap text-orange-500">
                 Omni
@@ -76,7 +77,7 @@ try {
               log
             </span>
           </Link>
-            <ul className="space-y-2 font-medium">
+            <ul className="space-y-2 font-medium mt-8">
                <li>
                   <Link href="/admin/dashboard" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <span className="w-5 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
@@ -104,20 +105,23 @@ try {
             </Link>
          </li>
          <li>
-        <div className="relative">
+        <div className="relative mt-10">
           <button onClick={toggleDropdown} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            <span className="w-5 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
-              <BsDatabaseFillDown size={25} />
-            </span>
-            <span className="flex-1 ms-3 whitespace-nowrap">CRUD Operation</span>
+          
+          <span className="w-5 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
+          <BsFillSunFill size={25} />
+                  </span>
+            <span className="flex-1 ms-3 whitespace-nowrap">Select Theme</span>
           </button>
           {dropdownOpen && (
-            <div className="absolute mt-1 right-1 top-full min-w-max shadow rounded opacity-0 bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10">
+            <div className="absolute mt-1 right-1 top-full min-w-max shadow rounded bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10">
               <ul className="block text-right text-gray-900">
-                <li><a href="#" className="block px-3 py-2 hover:bg-gray-200">Featured</a></li>
-                <li><a href="#" className="block px-3 py-2 hover:bg-gray-200">Newest</a></li>
-                <li><a href="#" className="block px-3 py-2 hover:bg-gray-200">Price: Low to High</a></li>
-                <li><a href="#" className="block px-3 py-2 hover:bg-gray-200">Price: High to Low</a></li>
+                <li onClick={lightmode}><span className="block px-3 py-2 cursor-pointer hover:bg-gray-200">
+            Light Mode
+                  </span></li>
+                <li onClick={darkmode}><span className="block px-3 py-2 cursor-pointer hover:bg-gray-200">
+            Dark Mode
+                  </span></li>
               </ul>
             </div>
           )}
@@ -127,7 +131,7 @@ try {
 
          </div>
          <li>
-            <button onClick={logout}  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-red-400 dark:hover:bg-gray-700 group">
+            <button onClick={logout}  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-red-700 dark:hover:bg-gray-700 group">
             <span className="w-5 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
             <CgLogOut size={25} />
                   </span>
@@ -136,16 +140,6 @@ try {
          </li>
 
             </ul>
-            <button onClick={toggleTheme} className="h-12 w-12 rounded-lg p-2 hover:scale-105 ">
-    <svg className="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-    </svg>
-    <svg className="fill-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-        <path
-            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-            fill-rule="evenodd" clip-rule="evenodd"></path>
-    </svg>
-</button>
          </div>
       </aside>
     </>

@@ -71,7 +71,7 @@ function Page(params) {
   console.log(blogData.subContent);
   const updatingStart = async (e) => {
     e.preventDefault();
-    if(!blogData.title || !blogData.categorie || !blogData.author || !blogData.maincontent || !blogData.image || !blogData.subContent){
+    if(!blogData.title || !blogData.categorie || !blogData.author || !blogData.maincontent || !blogData.image ){
       alert("All fields are required");
       return;
     }
@@ -175,10 +175,10 @@ function Page(params) {
               <div key={index} className="flex flex-col items-center mt-4 w-full max-w-xs sm:max-w-full" >
                 <label htmlFor={`subtitle-${index}`} className="text-sm font-medium text-purple-800 block mb-2">Sub Title</label>
               
-                <input type="text" value={subtitleField.title} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} className="shadow-sm bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle" required />
+                <input type="text" value={subtitleField.title} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} className="shadow-sm bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle"  />
                 <label htmlFor={`content-${index}`} className="text-sm font-medium text-purple-800 block mb-2 mt-4">Sub Content</label>
            
-                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} placeholder="Subtitle Content" className="bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" required></textarea>
+                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} placeholder="Subtitle Content" className="bg-gray-50 border border-gray-300 text-purple-800 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" ></textarea>
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 block mb-2">Sub Image</label>
             <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-12 rounded-lg overflow-hidden w-13 mb-6 p-1  sm:max-w-full">

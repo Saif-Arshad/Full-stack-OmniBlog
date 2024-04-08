@@ -1,10 +1,23 @@
-import React from 'react';
+"use client"
+import React , {useEffect,useState} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '../../../public/Images/Logo/icon.png'
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const today = currentYear > 2020 ? ` - ${currentYear}` : '';
+
+  const [latest,setlatest] =useState([])
+  useEffect(()=>{
+    const fetchingLatese= async ()=>{
+      const data = await fetch('/api/fetchblog');
+      const response = await data.json();
+      const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setlatest(sortedLatest)
+    }
+    fetchingLatese()
+  },[])
+  console.log(latest);
 
   return (
       <footer>
@@ -57,10 +70,13 @@ export default function Footer() {
               <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-purple-700 dark:border-blue-700">Latest Blog</h2>
             </div>
             <ul className="leading-8">
-              <li><Link href="#" className="hover:text-purple-700 dark:hover:text-blue-400">Getting Started With HTML and CSS</Link></li>
-              <li><Link href="#" className="hover:text-purple-700 dark:hover:text-blue-400">What Is Flex And When to Use It?</Link></li>
-              <li><Link href="#" className="hover:text-purple-700 dark:hover:text-blue-400">How TailwindCSS Can Help Your Productivity?</Link></li>
-              <li><Link href="#" className="hover:text-purple-700 dark:hover:text-blue-400">5 Tips to Make Responsive Website</Link></li>
+              {
+              latest.slice(0, 4).map((titles, index) => (
+                // eslint-disable-next-line react/jsx-key
+                <li key={index}><Link href="#" className="hover:text-purple-700 dark:hover:text-blue-400">{titles.title}</Link></li>
+
+              ))
+            }
               <li><Link href="/" className="hover:text-purple-700 dark:hover:text-blue-400">See More</Link></li>
             </ul>
           </div>

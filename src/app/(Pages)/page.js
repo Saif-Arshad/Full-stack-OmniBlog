@@ -23,7 +23,7 @@ export default function Home() {
       <Searching />
 
       <div className='bg-white dark:bg-slate-900 flex flex-row flex-wrap justify-center gap-4'>
-        {data.map((blog) => (
+        {data.slice(0).reverse().map((blog) => (
           <div key={blog._id} className="max-w-sm w-full md:w-1/3 bg-white border border-gray-200 rounded-xl dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
               <Image
