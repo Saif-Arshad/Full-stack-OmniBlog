@@ -91,7 +91,7 @@ function Page() {
   };
 
   return (
-    <div className="flex min-h-screen sm:ml-64 bg-white dark:bg-slate-800">
+    <div className="flex min-h-screen sm:ml-64 bg-white dark:bg-slate-900">
       <AdminSideBar />
       <div className="flex flex-col ">
         <div className='flex flex-wrap items-center justify-center'>

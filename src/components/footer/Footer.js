@@ -12,7 +12,7 @@ export default function Footer() {
     const fetchingLatese= async ()=>{
       const data = await fetch('/api/fetchblog');
       const response = await data.json();
-      const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const sortedLatest = await response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
       setlatest(sortedLatest)
     }
     fetchingLatese()

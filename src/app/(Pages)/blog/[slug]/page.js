@@ -15,7 +15,7 @@ useEffect(() => {
     const filteredData = await filter.json();
     console.log(filteredData);
     setdata(filteredData.blog)
-    setloading(false)
+    setloading(false);
  
 }
 gettingArticles();
@@ -23,7 +23,11 @@ gettingArticles();
 
     return( 
       <>
-{ loading ? <Loading/> :
+{ loading ? 
+<div className='min-h-screen flex justify-center items-center bg-white dark:bg-slate-900'>
+<Loading/> 
+</div>
+:
 
 <div className='flex w-full bg-white dark:bg-slate-900'>
         <h1>{data.title}</h1>

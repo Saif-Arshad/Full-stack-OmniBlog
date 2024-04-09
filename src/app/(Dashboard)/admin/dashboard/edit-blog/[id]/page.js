@@ -50,6 +50,7 @@ function Page(params) {
     setBlogData({...blogData, subContent: newSubContent});
   };
   
+  
   const addSubtitleField = () => {
     // Check if the last subcontent has been filled
     const lastSubcontent = blogData.subContent[blogData.subContent.length - 1];
@@ -58,7 +59,7 @@ function Page(params) {
         ...blogData,
         subContent: [
           ...blogData.subContent,
-          { subtitle: "", content: "", image: "" }
+          { title: "", content: "", image: "" }
         ]
       });
     }
@@ -108,8 +109,12 @@ function Page(params) {
   return( 
     <div className='flex sm:ml-64'>
       <AdminSideBar/>        
-      {loading ? <Loading className="w-full"/> :
-      <div className="flex flex-col items-center w-screen">
+      {loading ?
+      <div className="min-h-screen min-w-screen bg-white dark:bg-slate-900">
+      <Loading/> 
+      </div>
+      :
+      <div className="flex flex-col items-center w-screen bg-white dark:bg-slate-900">
         <div className="flex items-start justify-between p-5 border-b-2  rounded-t">
           <h3 className="text-2xl text-purple-800 dark:text-orange-500  font-bold  ">Update Article</h3>
         </div>
@@ -170,18 +175,17 @@ function Page(params) {
             <div className="w-full max-w-xs sm:max-w-full">
             <label htmlFor="Main content" className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Main Content</label>
 
-            <textarea value={blogData.maincontent} onChange={(e) => setBlogData({...blogData, maincontent: e.target.value})} placeholder="Main Content" rows="3" className="bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" required></textarea>
+            <textarea value={blogData.maincontent} onChange={(e) => setBlogData({...blogData, maincontent: e.target.value})} placeholder="Main Content"cols={80} rows={8}  className="bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" required></textarea>
             </div>
         
             {/* Subtitle Fields (Dynamic) */}
             {blogData.subContent.map((subtitleField, index) => (
               <div key={index} className="flex flex-col items-center mt-4 w-full max-w-xs sm:max-w-full" >
                 <label htmlFor={`subtitle-${index}`} className="text-sm font-medium text-purple-800 dark:text-white  block mb-2">Sub Title</label>
-              
-                <input type="text" value={subtitleField.title} onChange={(e) => handleSubtitleChange(index, 'subtitle', e.target.value)} className="shadow-sm bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle"  />
+                <input type="text" value={subtitleField.title} onChange={(e) => handleSubtitleChange(index, 'title', e.target.value)} className="shadow-sm bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Subtitle"  />
                 <label htmlFor={`content-${index}`} className="text-sm font-medium text-purple-800 dark:text-white  block mb-2 mt-4">Sub Content</label>
            
-                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} placeholder="Subtitle Content" className="bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" ></textarea>
+                <textarea value={subtitleField.content} onChange={(e) => handleSubtitleChange(index, 'content', e.target.value)} cols={80} rows={8}  placeholder="Subtitle Content" className="bg-gray-50 dark:bg-gray-700  border border-gray-300 text-purple-800 dark:text-white  sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" ></textarea>
                 <div className='flex flex-col items-center'>
             <label htmlFor="sub Image" className="text-sm mt-4 font-medium text-purple-800 dark:text-white  block mb-2">Sub Image</label>
             <div name="subimage" className=" max-w-xs cursor-pointer bg-black h-12 rounded-lg overflow-hidden w-13 mb-6 p-1  sm:max-w-full">
@@ -220,7 +224,7 @@ function Page(params) {
             <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" onClick={addSubtitleField}>Add Subtitle Field</button>
             
             {/* Submit Button */}
-            <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Update Article</button>
+            <button className="text-white mt-3 sm:mt-0 bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Update Article</button>
             </div>
               
           </form>

@@ -19,7 +19,7 @@ export async function POST(req) {
         // with the required fields for your schema
         for (const subtitle of subtitleFields) {
             const { image,content } = subtitle;
-            const title =subtitle.subtitle;
+            const title =subtitle.title;
             console.log(subtitle);
             console.log(title);
             subContentArray.push({

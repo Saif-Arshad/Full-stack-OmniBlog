@@ -26,9 +26,9 @@ useEffect(()=>{
 const postlength = latest.length;
 console.log(latest);
   return (
-    <div className='flex  min-h-screen  '>
+    <div className='flex  min-h-screen '>
       <AdminSideBar/>
-        <div className="content sm:ml-64 bg-white dark:bg-gray-800 w-full">
+        <div className="content sm:ml-64 bg-white dark:bg-slate-900 w-full">
 
           <div className='p-11 w-full' >
     <h1 className='text-2xl sm:text-4xl font-bold'>Welcome back Admin 👋</h1>
@@ -71,7 +71,7 @@ console.log(latest);
               latest.slice(0, 8).map((titles, index) => (
             // eslint-disable-next-line react/jsx-key
             <Link href={`/blog/${titles._id}`}>
-                <h2 className='font-normal text-sm sm:text-lg mt-1 hover:text-purple-600 dark:hover:text-orange-400 underline underline-offset-1 cursor-pointer' key={index}>{titles.title}</h2>
+                <h2 className='font-semibold text-sm sm:text-lg mt-1 hover:text-purple-800 dark:hover:text-orange-400 cursor-pointer' key={index}>{titles.title}</h2>
              </Link>
               ))
             }
