@@ -5,6 +5,7 @@ import Dropdown from '@/components/Dropdown/Dropdown';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import Loading from '@/components/Loading';
 import { BsPencilFill } from "react-icons/bs";
 import { AiOutlineDelete,AiOutlineArrowRight } from "react-icons/ai";
@@ -93,6 +94,8 @@ function Page() {
   };
 
   return (
+    <Suspense>
+
     <div className="flex min-h-screen sm:ml-64 bg-white dark:bg-slate-900">
       <AdminSideBar />
       <div className="flex flex-col ">
@@ -163,6 +166,8 @@ function Page() {
 </div>
 </div>
 </div>
+</Suspense>
+
 )
 }
 

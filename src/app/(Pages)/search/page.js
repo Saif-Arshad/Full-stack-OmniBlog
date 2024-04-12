@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Searching from '@/components/Search/Searching';
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
 import Loading from '@/components/Loading';
+import { Suspense } from 'react'
 import '@/app/Stylesheets/Home.scss';
 import { useSearchParams } from 'next/navigation';
 import Searchloader from '@/components/Searchloader/Searchloader';
@@ -44,6 +45,7 @@ export default function page() {
     setload(load + 6)
   }
   return (
+    <Suspense>
     <>
     <Searching />
     {loading ? (
@@ -109,6 +111,6 @@ export default function page() {
       </div>
     )}
   </>
-  
+  </Suspense>
   )
 }

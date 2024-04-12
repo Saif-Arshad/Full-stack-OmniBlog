@@ -2,6 +2,7 @@
 'use client'
 import React, { useEffect,useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import Image from 'next/image'
 import Searching from '@/components/Search/Searching'
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
@@ -46,6 +47,8 @@ function page() {
   }
 
   return (
+    <Suspense>
+
     <>
     <Searching />
     {loading ? <Loading/> :
@@ -104,6 +107,7 @@ function page() {
               </div>
             )}
   </>
+            </Suspense>
   )
 }
 
