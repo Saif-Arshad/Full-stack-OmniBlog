@@ -13,7 +13,7 @@ export default function Page() {
   const [Maincontent, setMaincontent] = useState("");
   const [Image, setImage] = useState("");
   const [subtitleFields, setSubtitleFields] = useState([{ subtitle: "", content: "", image: "" }]);
-  console.log(subtitleFields);
+  // console.log(subtitleFields);
   const handleSubtitleChange = (index, key, value) => {
     const newSubtitleFields = [...subtitleFields];
     newSubtitleFields[index][key] = value;
@@ -48,12 +48,13 @@ export default function Page() {
         })
       });
       if (res.ok) {
-        console.log('successfully created');
+        // console.log('successfully created');
         router.push('/admin/dashboard');
       
       }
     } catch (error) {
-      console.log('error: ' + error);
+      throw error.message;
+      // console.log('error: ' + error);
     }
   };
 
@@ -91,11 +92,12 @@ export default function Page() {
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
-                  console.log("Files: ", res);
+                  // console.log("Files: ", res);
                   setImage(res[0].url)
                 }}
                 onUploadError={(error) => {
-                  console.log(`ERROR! ${error.message}`);
+                  throw error.message;
+                  // console.log(`ERROR! ${error.message}`);
                 }}
               />
             </div>
@@ -132,13 +134,14 @@ export default function Page() {
               <UploadButton
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {
-                  console.log("Files: ", res);
+                  // console.log("Files: ", res);
                   const newSubtitleFields = [...subtitleFields];
             newSubtitleFields[index].image = res[0].url;
             setSubtitleFields(newSubtitleFields);
                 }}
                 onUploadError={(error) => {
-                  console.log(`ERROR! ${error.message}`);
+                  throw error.message;
+                  // console.log(`ERROR! ${error.message}`);
                 }}
               />
             </div>

@@ -24,7 +24,7 @@ useEffect(()=>{
   fetchingLatese()
 },[])
 const postlength = latest.length;
-console.log(latest);
+// console.log(latest);
   return (
     <div className='flex  min-h-screen bg-white dark:bg-slate-900'>
       <AdminSideBar/>

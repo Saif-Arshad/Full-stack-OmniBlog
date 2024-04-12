@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(req) {
   try {
     const search = req.nextUrl.searchParams.get("q");
-    console.log(search);
+    // console.log(search);
 
     await DbConnection();
 
@@ -28,7 +28,6 @@ export async function GET(req) {
       searchAnswer
     });
   } catch (error) {
-    console.error(error);
     return NextResponse.error("Internal Server Error");
   }
 }

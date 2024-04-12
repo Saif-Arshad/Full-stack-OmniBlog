@@ -13,7 +13,8 @@ export default function Home() {
   const [loading,setloading] = useState(true);
 
   useEffect(() => {
-    const fetching = async () => {
+    try {
+      const fetching = async () => {
         const res = await fetch('/api/fetchblog',{
           cache: 'no-store',
         });
@@ -22,9 +23,13 @@ export default function Home() {
       setloading(false);
     };
     fetching();
+    } catch (error) {
+        throw error.message;
+    }
+  
   }, []);
   
-  console.log(data);
+  // console.log(data);
   const loadmore = () => {
     setload(load + 8)
   }

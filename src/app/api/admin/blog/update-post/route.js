@@ -4,14 +4,14 @@ import BlogModel from "@/Models/Blog";
 export async function POST(req) {
 
     const editid = req.nextUrl.searchParams.get("id");
-    console.log(editid);
+    // console.log(editid);
 
 
 
     try {
         const { title, category, Image, Author, Maincontent,subtitleFields  } = await req.json();
         await DbConnection();
-        console.log(subtitleFields);
+        // console.log(subtitleFields);
         // Create an array to store the subtitle objects
         const subContentArray = [];
         
@@ -20,8 +20,8 @@ export async function POST(req) {
         for (const subtitle of subtitleFields) {
             const { image,content } = subtitle;
             const title =subtitle.title;
-            console.log(subtitle);
-            console.log(title);
+            // console.log(subtitle);
+            // console.log(title);
             subContentArray.push({
                 image,
                 title,
@@ -45,7 +45,7 @@ export async function POST(req) {
 
         return new Response("Blog updated successfully", { status: 200 });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return new Response("Internal Server Error", { status: 500 });
     }
 }

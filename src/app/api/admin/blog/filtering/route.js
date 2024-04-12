@@ -4,11 +4,16 @@ import DbConnection from "@/Mongodb/mongodb";
 import { NextResponse } from "next/server";
 export async function GET(req){
     const filter = req.nextUrl.searchParams.get("blog") ;
-    console.log(filter);
-
+    // console.log(filter);
+  try {
     await DbConnection()
-  const all =   await BlogModel.find({categorie:filter})
-    return NextResponse.json({
-       all
-    })
+    const all =   await BlogModel.find({categorie:filter})
+      return NextResponse.json({
+         all
+      })
+  } catch (error) {
+    return new Response("Internal Server Error", { status: 500 });
+    
+  }
+  
 }

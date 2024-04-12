@@ -9,10 +9,10 @@ import Loading from '@/components/Loading';
 import '@/app/Stylesheets/Home.scss';
 import { useSearchParams } from 'next/navigation';
 import Searchloader from '@/components/Searchloader/Searchloader';
-export default function page(props) {
+export default function page() {
     const searchParams = useSearchParams();
   const searchURL = searchParams.get('q');
-  console.log(searchURL);
+  // console.log(searchURL);
    const [data,setdata] = useState([])
   const [load,setload] = useState(6)
   const [loading,setloading]=useState(true)
@@ -33,7 +33,8 @@ export default function page(props) {
 
         fetchSearch()
     } catch (error) {
-        console.log(error);
+      throw error.message
+        // console.log(error);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[ searchURL])

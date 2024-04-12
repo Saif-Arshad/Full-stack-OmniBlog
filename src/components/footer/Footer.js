@@ -17,7 +17,7 @@ export default function Footer() {
     }
     fetchingLatese()
   },[])
-  console.log(latest);
+  // console.log(latest);
 
   return (
       <footer>

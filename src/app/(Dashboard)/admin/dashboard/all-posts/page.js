@@ -25,14 +25,15 @@ function Page() {
           });
           
           if (!response.ok) {
-            console.log('Failed to fetch data');
-            return;
+            throw new Error("Failed to fetch data");
+            // console.log('Failed to fetch data');
           }
           const filter = await response.json();
           setData(filter.all);
           setloading(false)
         } catch (error) {
-          console.error('Error fetching data:', error);
+          throw error.message
+          // console.error('Error fetching data:', error);
         }
       };
   
@@ -45,15 +46,15 @@ function Page() {
             cache: 'no-store',
           });
           if (!response.ok) {
-            console.log('Failed to fetch data');
-            return;
+            throw new Error("Failed to fetch data");
           }
           const filter = await response.json();
           setData(filter.res.reverse());
           setloading(false)
 
         } catch (error) {
-          console.error('Error fetching data:', error);
+        throw error.message
+          // console.error('Error fetching data:', error);
         }
       };
   
@@ -62,9 +63,9 @@ function Page() {
    
   }, [blogUrl]);
 
-  useEffect(() => {
-    console.log(Data);
-  }, [Data]);
+  // useEffect(() => {
+  //   console.log(Data);
+  // }, [Data]);
       
 
   const DeleteNow =async (id) => {
@@ -76,9 +77,10 @@ function Page() {
       });
       if (response.ok) {
         window.location.reload();
-        console.log('Article deleted successfully');
+        // console.log('Article deleted successfully');
       } else {
-        console.log('Failed to delete article');
+        throw new Error("Failed to delete article");
+        // console.log('Failed to delete article');
       }
     } {
       

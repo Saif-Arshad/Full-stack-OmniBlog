@@ -22,7 +22,8 @@ try {
     await fetch("/api/admin/logout")
     router.push("/")
 } catch (error) {
-  console.log(error);
+  throw error.message
+ // console.log(error);
 }
   }
   // Function to toggle sidebar

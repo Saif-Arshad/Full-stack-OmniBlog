@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function DELETE(req){
     try {
     const id = req.nextUrl.searchParams.get("id") ;
-    console.log(id)
+    // console.log(id)
     await DbConnection();
    const deleted =  await BlogModel.findByIdAndDelete(id);
    if(!deleted){
@@ -14,6 +14,7 @@ export async function DELETE(req){
     return NextResponse.json({message: "Blog deleted"});
     }
     catch(err){
-      console.log(err)
+      return new Response("Internal Server Error", { status: 500 });
+      // console.log(err)
     }
   }

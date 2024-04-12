@@ -8,13 +8,13 @@ function Searching() {
      const router = useRouter()
     const submitSearch = async(e) =>{
         e.preventDefault() 
-        console.log("submit clicked search");
+        // console.log("submit clicked search");
             if (!search) {
                 alert("Please enter something to search")
             } 
                 router.push(`/search?q=${search}`);       
     }
-    console.log(search);
+    // console.log(search);
   return (
     <div className='bg-white dark:bg-gray-900 py-5 px-6 md:py-14 md:px-20 ' >
             <h1 className='font-semibold text-xl md:text-5xl md:font-bold'>Discover the latest Articles on OnmiBlog</h1>

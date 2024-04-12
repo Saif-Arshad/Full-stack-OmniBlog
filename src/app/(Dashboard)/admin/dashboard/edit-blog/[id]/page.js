@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 function Page(params) {
   const id =  params.params.id;
-  console.log(id);
+  // console.log(id);
 
   const [blogData, setBlogData] = useState({
     title: "",
@@ -25,18 +25,21 @@ function Page(params) {
       try {
         const response = await fetch(`/api/admin/blog/update-get?id=${id}`);
         if (!response.ok) {
-          console.log('Failed to fetch data');
+          throw new Error('Failed to fetch data');
+          // console.log('Failed to fetch data');
         }
         const data = await response.json();
         if (!data) {
-          console.log("Error fetching data");
-          return;
+          throw new Error('Failed to fetch data');
+          // console.log("Error fetching data");
+          // return;
         }
-        console.log(data);
+        // console.log(data);
         setBlogData(data.blog || {});
         setloading(false)
       } catch (error) {
-        console.error("Error fetching data:", error);
+        throw error.message;
+        // console.error("Error fetching data:", error);
       }
     };
     gettingArticles();
@@ -71,7 +74,7 @@ function Page(params) {
     newSubContent[index].image = url;
     setBlogData({...blogData, subContent: newSubContent});
   };
-  console.log(blogData.subContent);
+  // console.log(blogData.subContent);
   const updatingStart = async (e) => {
     e.preventDefault();
     if(!blogData.title || !blogData.categorie || !blogData.author || !blogData.maincontent || !blogData.image ){
@@ -80,7 +83,7 @@ function Page(params) {
     }
       try {
         const currentid = blogData._id
-        console.log(currentid);
+        // console.log(currentid);
         const res = await fetch(`/api/admin/blog/update-post?id=${currentid}`, {
           method: 'POST',
           headers: {
@@ -96,13 +99,14 @@ function Page(params) {
           })
         });
         if (res.ok) {
-          console.log('successfully updated');
+          // console.log('successfully updated');
           router.push('/admin/dashboard/all-posts');
         
         }
         
       } catch (error) {
-        console.log(error); 
+        throw error.message
+        // console.log(error); 
       }
   };
 
@@ -149,7 +153,7 @@ function Page(params) {
             <UploadButton
               endpoint="imageUploader"
               onClientUploadComplete={(res) => setBlogData({...blogData, image: res[0].url})}
-              onUploadError={(error) => console.error(`ERROR! ${error.message}`)}
+              onUploadError={(error) =>  {throw error.message}  }
             />
             </div>
           <Image
@@ -193,7 +197,10 @@ function Page(params) {
                 <UploadButton
                   endpoint="imageUploader"
                   onClientUploadComplete={(res) => uploadImage(index, res[0].url)}
-                  onUploadError={(error) => console.error(`ERROR! ${error.message}`)}
+                  onUploadError={(error) =>{
+                      throw error.message
+                    //  console.error(`ERROR! ${error.message}`)
+                    }}
                 />
               </div>
               {subtitleField.image ? 

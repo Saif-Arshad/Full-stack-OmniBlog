@@ -17,8 +17,8 @@ function page() {
   const [load,setload] = useState(6)
   const [loading,setloading]=useState(true)
 
-  console.log(urlDataone);
-  console.log(urlDatatwo);
+  //console.log(urlDataone);
+  //console.log(urlDatatwo);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -27,13 +27,15 @@ function page() {
           cache: 'no-store',
         });
         if (!response.ok) {
-          console.log(('Failed to fetch data'));
+          throw new Error('Failed to fetch data');
+         // console.log(('Failed to fetch data'));
         }
         const filter = await response.json();
         setdata(filter.all.reverse());
         setloading(false)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        throw error.message
+        //console.error('Error fetching data:', error);
       }
     };
 

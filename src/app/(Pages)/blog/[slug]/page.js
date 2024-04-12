@@ -12,15 +12,19 @@ function Page() {
 
 
 useEffect(() => {
-  const gettingArticles = async ()=>{
-    const filter= await fetch(`/api/blogdata?id=${params.slug}`)
-    const filteredData = await filter.json();
-    console.log(filteredData);
-    setdata(filteredData.blog)
-    setloading(false);
- 
-}
-gettingArticles();
+  try {
+    const gettingArticles = async ()=>{
+      const filter= await fetch(`/api/blogdata?id=${params.slug}`)
+      const filteredData = await filter.json();
+      setdata(filteredData.blog)
+      setloading(false);
+   
+  }
+  gettingArticles();
+  } catch (error) {
+    throw error.message
+  }
+
 }, [params])
 
     return( 

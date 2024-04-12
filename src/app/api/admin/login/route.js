@@ -9,13 +9,13 @@ export async function POST(req) {
         const admin = await Admin.findOne({ email: Email });
 
         if (!admin) {
-            console.log("Email is wrong");
+            // console.log("Email is wrong");
             return NextResponse.json({ error: "Email is wrong"});        }
 
             const currentPassword =  (Password === admin.password);
-            console.log(currentPassword);
+            // console.log(currentPassword);
             if (!currentPassword) {
-                console.log("password is not valid");
+                // console.log("password is not valid");
                 return NextResponse.json({ error: "Password is wrong"});        }
  
         const tokenData = {
@@ -23,7 +23,7 @@ export async function POST(req) {
             username: admin.Firstname + " " + admin.Lastname,
             email: admin.email
         };
-        console.log(tokenData);
+        // console.log(tokenData);
         
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: "1d" });
 
@@ -39,7 +39,7 @@ export async function POST(req) {
         return response; 
 
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         return NextResponse.json({ message: "Error occurred while logging in" }, { status: 500 });
     }
 }
