@@ -5,6 +5,9 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import  {Providers}  from "../provider";
+import { Suspense } from 'react'
+import Loading from "@/components/Loading";
+
 
 export const metadata = {
   title: "The Omni Blog",
@@ -21,7 +24,9 @@ export default function RootLayout({ children}) {
         <Providers>
 
         <Nav/>
+        <Suspense fallback={<Loading/>}>
         {children}
+        </Suspense>
         <Footer/>
         </Providers>
         </body>
