@@ -14,7 +14,7 @@ function Page() {
 useEffect(() => {
   try {
     const gettingArticles = async ()=>{
-      const filter= await fetch(`/api/blogdata?id=${params.slug}`)
+      const filter= await fetch(`${process.env.LIVE_HOST}/api/blogdata?id=${params.slug}`)
       const filteredData = await filter.json();
       setdata(filteredData.blog)
       setloading(false);

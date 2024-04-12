@@ -20,7 +20,7 @@ function Page() {
     if (blogUrl) {
       const fetchData = async () => {
         try {
-          const response = await fetch(`/api/admin/blog/filtering?blog=${blogUrl}`,{
+          const response = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/filtering?blog=${blogUrl}`,{
             cache: 'no-store',
           });
           
@@ -42,7 +42,7 @@ function Page() {
     else{
       const fetchall = async () => {
         try {
-          const response = await fetch(`/api/fetchblog`,{
+          const response = await fetch(`${process.env.LIVE_HOST}/api/fetchblog`,{
             cache: 'no-store',
           });
           if (!response.ok) {
@@ -71,7 +71,7 @@ function Page() {
   const DeleteNow =async (id) => {
     const confirming = confirm(`Are you sure you want to delete this article ?`);
     if (confirming) {
-      const response = await fetch(`/api/admin/blog/deleteing?id=${id}`, {
+      const response = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/deleteing?id=${id}`, {
         method: 'DELETE',
         cache: 'no-store',
       });

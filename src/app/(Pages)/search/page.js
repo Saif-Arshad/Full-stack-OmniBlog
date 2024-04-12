@@ -20,7 +20,7 @@ export default function page() {
   useEffect(() => {
     try {
       const fetchSearch = async () => {
-        const res = await fetch(`/api/searchblog?q= ${searchURL}`,{
+        const res = await fetch(`${process.env.LIVE_HOST}/api/searchblog?q= ${searchURL}`,{
           cache: 'no-store',
         })
         const serverData =await res.json()

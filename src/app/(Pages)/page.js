@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     try {
       const fetching = async () => {
-        const res = await fetch('/api/fetchblog',{
+        const res = await fetch(`${process.env.LIVE_HOST}/api/fetchblog`,{
           cache: 'no-store',
         });
         const Blogdata = await res.json();
