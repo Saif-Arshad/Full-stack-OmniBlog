@@ -71,7 +71,7 @@ export default function Footer() {
             </div>
             <ul className="leading-8">
               {
-              latest.slice(0, 4).map((titles, index) => (
+              latest.slice(0, 5).map((titles, index) => (
                 // eslint-disable-next-line react/jsx-key
                 <li key={index}><Link href={`/blog/${titles._id}`} className="hover:text-purple-700 dark:hover:text-blue-400">{titles.title}</Link></li>
 

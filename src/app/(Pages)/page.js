@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Loading from '@/components/Loading';	
 export default function Home() {
   const [data, setData] = useState([]);
-  const [load,setload] = useState(6)
+  const [load,setload] = useState(8)
   const [loading,setloading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Home() {
   
   console.log(data);
   const loadmore = () => {
-    setload(load + 6)
+    setload(load + 8)
   }
 
   return (
@@ -55,12 +55,12 @@ export default function Home() {
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 90)}...` : blog.maincontent}
               </p>
-                <Link href={`/blog/${blog._id}`} className=" inline-flex m-auto items-center px-3 py-2 mt-3 text-lg font-semibold text-center text-black hover:text-blue-950 dark:text-white ">
-                Read more
-                <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                </svg>
-              </Link>
+                  {/* <Link href={`/blog/${blog._id}`} className=" inline-flex m-auto items-center px-3 py-2 mt-3 text-lg font-semibold text-center text-black hover:text-blue-950 dark:text-white ">
+                  Read more
+                  <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                  </svg>
+                </Link> */}
               
               <div className='flex flex-wrap gap-1 mt-4 items-center  text-purple-800 dark:text-white font-semibold'>
                   <Image 
