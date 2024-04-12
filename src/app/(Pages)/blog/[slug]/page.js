@@ -71,11 +71,7 @@ gettingArticles();
     {
       data.subContent.map((subcontent,index)=>(
         <div key={index}>
-        <h1 className='font-semibold md:text-blod text-2xl md:text-3xl capitalize'>{subcontent.title}</h1>
-        <p className='mt-8 sm:text-lg dark:text-gray-200 md:text-xl text-start'>
-          {subcontent.content}
-        </p>
-        { subcontent.image?
+          { subcontent.image?
         <div className='Main-Image w-full h-full relative my-10'>
   <Image
       src={`${subcontent.image}`}
@@ -87,6 +83,11 @@ gettingArticles();
     />
   
 </div> : ""}
+        <h1 className='font-semibold md:text-blod text-2xl md:text-3xl capitalize'>{subcontent.title}</h1>
+        <p className='mt-8 sm:text-lg dark:text-gray-200 md:text-xl text-start'>
+          {subcontent.content}
+        </p>
+        
         </div>
       ))
 

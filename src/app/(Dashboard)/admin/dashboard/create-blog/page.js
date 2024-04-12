@@ -58,9 +58,9 @@ export default function Page() {
   };
 
   return (
-    <div className='flex sm:ml-64'>
+    <div className='flex sm:ml-64 bg-white dark:bg-slate-900'>
       <AdminSideBar />
-      <div className="flex flex-col items-center w-screen bg-white dark:bg-gray-800">
+      <div className="flex flex-col items-center w-screen bg-white dark:bg-slate-900">
         <div className="flex items-start justify-between p-5 border-b-2  rounded-t">
           <h3 className="text-2xl text-purple-800 dark:text-orange-500  font-bold ">Create Article</h3>
         </div>

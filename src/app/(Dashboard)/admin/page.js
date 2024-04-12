@@ -20,7 +20,6 @@ function page(name) {
     e.preventDefault() 
     if(!Email || !Password || !Lname || !Fname){
       toast.error("All Fields are required.")
-      // alert("All Fields are required")
         setProcessing(false)
         return;
       }

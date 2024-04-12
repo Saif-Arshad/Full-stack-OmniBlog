@@ -107,7 +107,7 @@ function Page(params) {
   };
 
   return( 
-    <div className='flex sm:ml-64'>
+    <div className='flex sm:ml-64 bg-white dark:bg-slate-900'>
       <AdminSideBar/>        
       {loading ?
       <div className="min-h-screen min-w-screen bg-white dark:bg-slate-900">
