@@ -70,9 +70,12 @@ export default function page(props) {
                   <Link href={`/blog/${blog._id}`}>
                     <h5 className="mb-2 text-lg sm:text-xl dark:hover:text-blue-500  hover:text-blue-500 hover:underline capitalize font-semibold mt-4 tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
                   </Link>
+                  <Link href={`/blog/${blog._id}`}>
+                
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 90)}...` : blog.maincontent}
                   </p>
+                  </Link>
                   
                   <div className='flex flex-wrap gap-1 mt-6 items-center text-purple-800 dark:text-blue-700 font-semibold'>
                     <Image 
@@ -84,12 +87,12 @@ export default function page(props) {
                     />
                     {blog.author}
                   </div>
-                  <Link href={`/blog/${blog._id}`} className=" inline-flex items-center px-3 py-2 mt-5 text-lg font-semibold hover:underline text-center text-black hover:text-blue-950 dark:text-white ">
+                  {/* <Link href={`/blog/${blog._id}`} className=" inline-flex items-center px-3 py-2 mt-5 text-lg font-semibold hover:underline text-center text-black hover:text-blue-950 dark:text-white ">
                     Read more
                     <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                     </svg>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             ))}

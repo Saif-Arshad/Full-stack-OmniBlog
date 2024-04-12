@@ -3,7 +3,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import  {Providers}  from "../provider";
-
+import { Toaster } from "react-hot-toast";
 export const metadata = {
   title: "Admin | Omni Blog",
   description: `Website for blogs and have an admin dashboard where admin can see all blogs there 
@@ -17,6 +17,7 @@ export default function RootLayout({ children}) {
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
         <Providers>
+        <Toaster position="top-center"/>
         {children}
         </Providers>
         </body>

@@ -18,7 +18,7 @@ function Searching() {
   return (
     <div className='bg-white dark:bg-gray-900 py-5 px-6 md:py-14 md:px-20 ' >
             <h1 className='font-semibold text-xl md:text-5xl md:font-bold'>Discover the latest Articles on OnmiBlog</h1>
-            <p className='mt-4 sm:mt-8 text-black dark:text-gray-200 w-4/4 sm:w-3/4 md:w-2/4 text-sm md:text-xl' >All articles are displayed here and you can quickly find what you are looking for using the search option.</p>
+            <p className='mt-4 sm:mt-8 text-black dark:text-gray-200 w-4/4 sm:w-3/4 md:w-2/4 text-sm md:text-xl' >All articles are displayed here and you can quickly find what you are looking for using the search field.</p>
         <div className='mt-4'>
             
 <form className="max-w-md" onSubmit={submitSearch}>   

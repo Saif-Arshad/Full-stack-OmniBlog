@@ -52,9 +52,13 @@ export default function Home() {
             <Link href={`/blog/${blog._id}`}>
                 <h5 className="mb-2 text-lg sm:text-xl  hover:text-blue-500 hover:underline capitalize font-semibold mt-4 tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
              </Link>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            <Link href={`/blog/${blog._id}`}>
+
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 ">
                 {blog.maincontent.length > 150 ? `${blog.maincontent.substring(0, 90)}...` : blog.maincontent}
               </p>
+             </Link>
+
                   {/* <Link href={`/blog/${blog._id}`} className=" inline-flex m-auto items-center px-3 py-2 mt-3 text-lg font-semibold text-center text-black hover:text-blue-950 dark:text-white ">
                   Read more
                   <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
