@@ -6,7 +6,6 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import  {Providers}  from "../provider";
 import { Suspense } from 'react'
-import Loading from "@/components/Loading";
 
 
 export const metadata = {
@@ -24,7 +23,7 @@ export default function RootLayout({ children}) {
         <Providers>
 
         <Nav/>
-        <Suspense fallback={<Loading/>}>
+        <Suspense>
         {children}
         </Suspense>
         <Footer/>
