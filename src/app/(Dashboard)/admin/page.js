@@ -35,7 +35,7 @@ function page(name) {
         })
       })  
       router.push("/admin/dashboard");
-    setProcessing(false)
+    // setProcessing(false)
 
      } catch (error) {
       throw error.message

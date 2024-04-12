@@ -116,9 +116,9 @@ function Page() {
               width={200}
             />
           </div>
-          <div className='flex justify-around'>
-          <h3 className='ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.categorie}</h3>
-          <h3 className='ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.author}</h3>
+          <div className='flex justify-around sm:flex-row flex-col ml-3 sm:ml-0'>
+          <h3 className='sm:ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.categorie}</h3>
+          <h3 className='sm:ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.author}</h3>
           </div>
 
           <div className="flex flex-col gap-2 p-4">
@@ -129,13 +129,13 @@ function Page() {
             </p>
             <div className='flex space-x-4 flex-wrap  justify-center'>
             <Link href={`/admin/dashboard/edit-blog/${data._id}`} >
-              <button className='flex items-center text-lg font-semibold text-purple-600 dark:text-white'>
+              <button className='flex items-center text-lg font-semibold text-white dark:text-purple-800 dark:bg-slate-100  bg-slate-900 py-2 px-3 rounded-xl'>
             <BsPencilFill size={16} />
             Edit
             </button>
                         </Link>
                            
-                   <button onClick={()=>DeleteNow(data._id)} className= 'flex items-center text-lg font-semibold text-purple-600 dark:text-white'>
+                   <button onClick={()=>DeleteNow(data._id)} className= 'flex items-center text-lg font-semibold text-black dark:border-white dark:text-white border-2 py-1 border-slate-900 px-3 rounded-xl '>
                    <AiOutlineDelete size={16} />
             Delete
                       </button> 
