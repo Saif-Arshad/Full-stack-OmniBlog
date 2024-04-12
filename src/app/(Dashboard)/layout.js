@@ -5,6 +5,7 @@ import { ourFileRouter } from "@/app/api/uploadthing/core";
 import  {Providers}  from "../provider";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from 'react'
+import Loading from "@/components/Loading";
 
 export const metadata = {
   title: "Admin | Omni Blog",
@@ -20,7 +21,7 @@ export default function RootLayout({ children}) {
         />
         <Providers>
         <Toaster position="top-center"/>
-        <Suspense>
+        <Suspense fallback={<Loading />}>
         {children}
         </Suspense>
         </Providers>
