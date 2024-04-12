@@ -42,7 +42,7 @@ console.log(latest);
         <MdPostAdd size={45} />
         </div>
         <div className="my-2">
-            <h2 className="text-2xl md:text-4xl font-bold"><span>{postlength}</span> +</h2>
+            <h2 className="text-2xl md:text-4xl font-bold">{postlength}</h2>
         </div>
 
         <div>
@@ -54,7 +54,7 @@ console.log(latest);
         <CiBullhorn size={45} />
         </div>
         <div className="my-2">
-            <h2 className="text-2xl md:text-4xl font-bold"><span>8</span> +</h2>
+            <h2 className="text-2xl md:text-4xl font-bold">8</h2>
         </div>
 
         <div>

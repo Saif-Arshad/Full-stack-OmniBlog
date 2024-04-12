@@ -41,9 +41,9 @@ gettingArticles();
         </>
     )
 }
-export const metadata = {
-  title: `${data.title}`,
-  description: `Website for blogs and have an admin dashboard where admin can see all blogs there 
-  category and perform CRUD operations and all blogs are store in MongoDB Atlas.`,
-};
+// export const metadata = {
+//   title: `${data.title}`,
+//   description: `Website for blogs and have an admin dashboard where admin can see all blogs there 
+//   category and perform CRUD operations and all blogs are store in MongoDB Atlas.`,
+// };
 export default Page;
