@@ -74,7 +74,7 @@ function Page(params) {
     newSubContent[index].image = url;
     setBlogData({...blogData, subContent: newSubContent});
   };
-  // console.log(blogData.subContent);
+  console.log(blogData);
   const updatingStart = async (e) => {
     e.preventDefault();
     if(!blogData.title || !blogData.categorie || !blogData.author || !blogData.maincontent || !blogData.image ){
@@ -83,7 +83,7 @@ function Page(params) {
     }
       try {
         const currentid = blogData._id
-        // console.log(currentid);
+        console.log(currentid);
         const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/admin/blog/update-post?id=${currentid}`, {
           method: 'POST',
           headers: {
@@ -99,14 +99,14 @@ function Page(params) {
           })
         });
         if (res.ok) {
-          // console.log('successfully updated');
+          console.log('successfully updated');
           router.push('/admin/dashboard/all-posts');
         
         }
         
       } catch (error) {
         throw error.message
-        // console.log(error); 
+        console.log(error); 
       }
   };
 

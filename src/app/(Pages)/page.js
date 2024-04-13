@@ -29,7 +29,7 @@ export default function Home() {
   
   }, []);
  
-  // console.log(data);
+  console.log(data);
   const loadmore = () => {
     setload(load + 8)
   }

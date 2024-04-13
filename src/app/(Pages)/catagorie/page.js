@@ -2,7 +2,6 @@
 'use client'
 import React, { useEffect,useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 import Image from 'next/image'
 import Searching from '@/components/Search/Searching'
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
@@ -18,8 +17,8 @@ function page() {
   const [load,setload] = useState(6)
   const [loading,setloading]=useState(true)
 
-  //console.log(urlDataone);
-  //console.log(urlDatatwo);
+  console.log(urlDataone);
+  console.log(urlDatatwo);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -29,14 +28,12 @@ function page() {
         });
         if (!response.ok) {
           throw new Error('Failed to fetch data');
-         // console.log(('Failed to fetch data'));
         }
         const filter = await response.json();
         setdata(filter.all.reverse());
         setloading(false)
       } catch (error) {
         throw error.message
-        //console.error('Error fetching data:', error);
       }
     };
 
@@ -45,10 +42,8 @@ function page() {
   const loadmore = () => {
     setload(load + 6)
   }
-
+console.log(data);
   return (
-    <Suspense>
-
     <>
     <Searching />
     {loading ? <Loading/> :
@@ -107,7 +102,6 @@ function page() {
               </div>
             )}
   </>
-            </Suspense>
   )
 }
 

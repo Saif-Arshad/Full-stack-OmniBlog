@@ -54,7 +54,7 @@ function Page() {
 
         } catch (error) {
         throw error.message
-          // console.error('Error fetching data:', error);
+          console.error('Error fetching data:', error);
         }
       };
   
@@ -63,9 +63,9 @@ function Page() {
    
   }, [blogUrl]);
 
-  // useEffect(() => {
-  //   console.log(Data);
-  // }, [Data]);
+  useEffect(() => {
+    console.log(Data);
+  }, [Data]);
       
 
   const DeleteNow =async (id) => {
@@ -77,10 +77,10 @@ function Page() {
       });
       if (response.ok) {
         window.location.reload();
-        // console.log('Article deleted successfully');
+        console.log('Article deleted successfully');
       } else {
         throw new Error("Failed to delete article");
-        // console.log('Failed to delete article');
+        console.log('Failed to delete article');
       }
     } {
       
