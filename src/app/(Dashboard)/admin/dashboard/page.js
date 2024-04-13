@@ -13,7 +13,7 @@ function page() {
 useEffect(()=>{
   // setloading(true)
   const fetchingLatese= async ()=>{
-    const data = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOSTT}/api/fetchblog`,{
+    const data = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`,{
       cache: 'no-store',
     });
     const response = await data.json();
