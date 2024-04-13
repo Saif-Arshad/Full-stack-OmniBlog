@@ -20,7 +20,7 @@ useEffect(()=>{
     const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
     setlatest(sortedLatest)
     setloading(false)
-console.log(response);
+// console.log(response);
 
   }
   fetchingLatese()
