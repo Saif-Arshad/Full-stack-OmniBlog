@@ -10,7 +10,7 @@ export default function Footer() {
   const [latest,setlatest] =useState([])
   useEffect(()=>{
     const fetchingLatese= async ()=>{
-      const data = await fetch('/api/fetchblog');
+      const data = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`);
       const response = await data.json();
       const sortedLatest = await response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
       setlatest(sortedLatest)

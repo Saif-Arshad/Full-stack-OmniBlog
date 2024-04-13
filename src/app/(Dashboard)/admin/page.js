@@ -24,7 +24,7 @@ function page(name) {
         return;
       }
       try {
-      const res = await fetch(`${process.env.LIVE_HOST}/api/admin/login`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/admin/login`, {
         method: 'POST',
         cache: 'no-store',
         headers: {

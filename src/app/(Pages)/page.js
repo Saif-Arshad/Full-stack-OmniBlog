@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import Searching from '@/components/Search/Searching';
 import Image from 'next/image';
 import Dummy from '../../../public/Images/Dummy/download.jpg'
@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     try {
       const fetching = async () => {
-        const res = await fetch(`${process.env.LIVE_HOST}/api/fetchblog`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`,{
           cache: 'no-store',
         });
         const Blogdata = await res.json();
@@ -28,7 +28,7 @@ export default function Home() {
     }
   
   }, []);
-  
+ 
   // console.log(data);
   const loadmore = () => {
     setload(load + 8)

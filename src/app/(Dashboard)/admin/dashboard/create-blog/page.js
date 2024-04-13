@@ -37,7 +37,7 @@ export default function Page() {
     }
 
     try {
-      const res = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/creating`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/admin/blog/creating`, {
         method: 'POST',
         cache: 'no-store',
         headers: {

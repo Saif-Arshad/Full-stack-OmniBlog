@@ -23,7 +23,7 @@ function Page(params) {
   useEffect(() => {
     const gettingArticles = async () => {
       try {
-        const response = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/update-get?id=${id}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/admin/blog/update-get?id=${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch data');
           // console.log('Failed to fetch data');
@@ -84,7 +84,7 @@ function Page(params) {
       try {
         const currentid = blogData._id
         // console.log(currentid);
-        const res = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/update-post?id=${currentid}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/admin/blog/update-post?id=${currentid}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
