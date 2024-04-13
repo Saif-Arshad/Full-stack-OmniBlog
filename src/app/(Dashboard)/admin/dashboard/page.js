@@ -16,11 +16,11 @@ useEffect(()=>{
     const data = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`,{
       cache: 'no-store',
     });
-    const response = await data.json();
-    const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const res= await data.json();
+    const sortedLatest = res.item.sort((a, b) => new Date(b.date) - new Date(a.date));
     setlatest(sortedLatest)
     setloading(false)
-// console.log(response);
+console.log(res);
 
   }
   fetchingLatese()
