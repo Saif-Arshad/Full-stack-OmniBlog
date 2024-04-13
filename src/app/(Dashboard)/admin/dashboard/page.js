@@ -20,12 +20,13 @@ useEffect(()=>{
     const sortedLatest = response.res.sort((a, b) => new Date(b.date) - new Date(a.date));
     setlatest(sortedLatest)
     setloading(false)
+console.log(response);
+
   }
   fetchingLatese()
 },[])
 const postlength = latest.length;
 console.log(latest);
-console.log(response);
   return (
     <div className='flex  min-h-screen bg-white dark:bg-slate-900'>
       <AdminSideBar/>
