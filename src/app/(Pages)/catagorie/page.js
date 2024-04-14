@@ -7,6 +7,7 @@ import Searching from '@/components/Search/Searching'
 import Dummy from '../../../../public/Images/Dummy/download.jpg'
 import '@/app/Stylesheets/Home.scss';
 import Link from 'next/link'
+
 import Loading from '@/components/Loading'
 
 function page() {

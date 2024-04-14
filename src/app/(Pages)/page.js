@@ -29,7 +29,7 @@ export default function Home() {
   
   }, []);
  
-  console.log(data);
+  // console.log(data);
   const loadmore = () => {
     setload(load + 8)
   }
@@ -71,7 +71,7 @@ export default function Home() {
                   </svg>
                 </Link> */}
               
-              <div className='flex flex-wrap gap-1 mt-4 items-center  text-purple-800 dark:text-white font-semibold'>
+              <div className='flex flex-wrap gap-1 mt-4 items-center capitalize text-purple-800 dark:text-white font-semibold'>
                   <Image 
                   className='rounded-xl'
                   src={Dummy}

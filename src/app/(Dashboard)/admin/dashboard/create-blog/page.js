@@ -48,13 +48,12 @@ export default function Page() {
         })
       });
       if (res.ok) {
-        console.log('successfully created');
+        // console.log('successfully created');
         router.push('/admin/dashboard');
       
       }
     } catch (error) {
       throw error.message;
-      console.log('error: ' + error);
     }
   };
 

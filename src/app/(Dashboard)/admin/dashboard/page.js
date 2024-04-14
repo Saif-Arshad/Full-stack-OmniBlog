@@ -3,6 +3,7 @@
 import AdminSideBar from '@/components/AdminSideBar'
 import React ,{useEffect,useState} from 'react'
 import Greeting from '@/components/Greeting/Greeting'
+import { AiOutlineLink } from "react-icons/ai";
 import Link from 'next/link'
 import { CiBullhorn } from "react-icons/ci";
 import Loading from '@/components/Loading'
@@ -25,7 +26,7 @@ useEffect(()=>{
   fetchingLatese()
 },[])
 const postlength = latest.length;
-console.log(latest);
+// console.log(latest);
   return (
     <div className='flex  min-h-screen bg-white dark:bg-slate-900'>
       <AdminSideBar/>
@@ -68,11 +69,16 @@ console.log(latest);
     <div className='sub sm:ml-8 lg:ml-0'>
       <h1 className='font-bold text-xl mt-5 sm:text-2xl text-purple-600 dark:text-orange-500'>Latest Articles</h1>
     <div className='py-6'>
+
         {
               latest.slice(0, 8).map((titles, index) => (
             // eslint-disable-next-line react/jsx-key
             <Link href={`/blog/${titles._id}`}>
-                <h2 className='md:font-semibold text-sm sm:text-lg mt-1 hover:text-purple-800 dark:hover:text-orange-400 cursor-pointer' key={index}>{titles.title}</h2>
+                <h2 className='md:font-semibold flex items-center justify-center sm:text-lg mt-1 hover:text-purple-800 dark:hover:text-orange-400 cursor-pointer' key={index}>
+                 <AiOutlineLink size={25}/>
+              {titles.title.length > 50 ? `${titles.title.substring(0, 45)}....` : titles.title}
+
+                  </h2>
              </Link>
               ))
             }

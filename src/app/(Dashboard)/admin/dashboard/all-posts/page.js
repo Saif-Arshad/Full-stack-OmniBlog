@@ -54,7 +54,6 @@ function Page() {
 
         } catch (error) {
         throw error.message
-          console.error('Error fetching data:', error);
         }
       };
   
@@ -63,9 +62,9 @@ function Page() {
    
   }, [blogUrl]);
 
-  useEffect(() => {
-    console.log(Data);
-  }, [Data]);
+  // useEffect(() => {
+  //   console.log(Data);
+  // }, [Data]);
       
 
   const DeleteNow =async (id) => {
@@ -77,10 +76,9 @@ function Page() {
       });
       if (response.ok) {
         window.location.reload();
-        console.log('Article deleted successfully');
+        // console.log('Article deleted successfully');
       } else {
         throw new Error("Failed to delete article");
-        console.log('Failed to delete article');
       }
     } {
       
@@ -118,11 +116,15 @@ function Page() {
           </div>
           <div className='flex justify-around sm:flex-row flex-col ml-3 sm:ml-0'>
           <h3 className='sm:ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.categorie}</h3>
-          <h3 className='sm:ml-4 mt-4 capitalize font-semibold text-purple-600'>{data.author}</h3>
+          <h3 className='sm:ml-4 mt-4 font-semibold text-purple-600 capitalize'>{data.author}</h3>
           </div>
 
           <div className="flex flex-col gap-2 p-4">
-            <p className="text-fw-normal  sm:text-xl font-bold text-black dark:text-white capitalize">{data.title}</p>
+            <p className="text-fw-normal  sm:text-xl font-bold text-black dark:text-white capitalize">
+              {/* {data.title} */}
+              {data.title.length > 50 ? `${data.title.substring(0, 45)}...` : data.title}
+
+              </p>
             <p className="text-gray-500 dark:text-white">
                   {data.maincontent.length > 150 ? `${data.maincontent.substring(0, 60)}...` : data.maincontent}
          
