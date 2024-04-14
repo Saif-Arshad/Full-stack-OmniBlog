@@ -16,7 +16,7 @@ Hosted on netlify here is link
 https://omniblog.netlify.app/
 
 ## Explain briefly in video
-[link](https://www.linkedin.com/posts/saif-rehman-professional_omniblog-is-a-web-platform-that-offers-informative-activity-7185257908681465856-8Dor?utm_source=share&utm_medium=member_desktop)
+[Click here to see video](https://www.linkedin.com/posts/saif-rehman-professional_omniblog-is-a-web-platform-that-offers-informative-activity-7185257908681465856-8Dor?utm_source=share&utm_medium=member_desktop)
 
 
 
