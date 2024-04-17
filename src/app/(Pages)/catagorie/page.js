@@ -22,6 +22,7 @@ function page() {
   console.log(urlDatatwo);
   
   useEffect(() => {
+    setdata([])
     const fetchData = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/filterblog?filter1=${urlDataone}&filter2=${urlDatatwo}`,{

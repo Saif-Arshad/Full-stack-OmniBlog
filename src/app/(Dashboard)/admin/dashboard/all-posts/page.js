@@ -17,6 +17,7 @@ function Page() {
   const [loading,setloading] = useState(true)
 
   useEffect(() => {
+    setData([])
     if (blogUrl) {
       const fetchData = async () => {
         try {
