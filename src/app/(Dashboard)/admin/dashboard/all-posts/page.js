@@ -17,7 +17,10 @@ function Page() {
   const [loading,setloading] = useState(true)
 
   useEffect(() => {
-    setData([])
+    if (Data) {
+      setData([])
+      setloading(true)
+    }
     if (blogUrl) {
       const fetchData = async () => {
         try {

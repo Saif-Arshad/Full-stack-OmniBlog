@@ -18,11 +18,14 @@ function page() {
   const [load,setload] = useState(6)
   const [loading,setloading]=useState(true)
 
-  console.log(urlDataone);
-  console.log(urlDatatwo);
+  // console.log(urlDataone);
+  // console.log(urlDatatwo);
   
   useEffect(() => {
-    setdata([])
+    if (data) {
+      setdata([])
+      setloading(true)
+    }
     const fetchData = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/filterblog?filter1=${urlDataone}&filter2=${urlDatatwo}`,{
