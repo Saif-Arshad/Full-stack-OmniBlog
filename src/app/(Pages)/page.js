@@ -14,8 +14,9 @@ export default function Home() {
 
   useEffect(() => {
     try {
+      const timestamp = new Date().getTime();
       const fetching = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog?ts=${timestamp}`, {
           cache: 'no-store',
         });
         const Blogdata = await res.json();
