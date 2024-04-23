@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
    export async function GET(){
     try {
         await DbConnection()
-        const res = await BlogModel.find()
+        const res = await BlogModel.find().lean();
 
         return NextResponse.json({res})
     } catch (error) {
