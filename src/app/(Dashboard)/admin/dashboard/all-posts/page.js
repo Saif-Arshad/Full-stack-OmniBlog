@@ -3,16 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import AdminSideBar from '@/components/AdminSideBar';
 import Dropdown from '@/components/Dropdown/Dropdown';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import Loading from '@/components/Loading';
 import { BsPencilFill } from "react-icons/bs";
 import { AiOutlineDelete,AiOutlineArrowRight } from "react-icons/ai";
 
-function Page() {
-  const searchParams = useSearchParams();
-  const blogUrl = searchParams.get('blog');
+function Page(params) {
+  const blogUrl = params.searchParams.blogcategorie;
   const [Data, setData] = useState([]);
   const [showCount, setShowCount] = useState(4);
   const [loading,setloading] = useState(true)
@@ -25,7 +23,7 @@ function Page() {
     if (blogUrl) {
       const fetchData = async () => {
         try {
-          const response = await fetch(`${process.env.LIVE_HOST}/api/admin/blog/filtering?blog=${blogUrl}`,{
+          const response = await fetch(`/api/admin/blog/filtering?blogcategorie=${blogUrl}`,{
             cache: 'no-store',
           });
           
@@ -35,6 +33,7 @@ function Page() {
           }
           const filter = await response.json();
           setData(filter.all);
+          console.log(filter)
           setloading(false)
         } catch (error) {
           throw error.message
@@ -54,6 +53,7 @@ function Page() {
             throw new Error("Failed to fetch data");
           }
           const filter = await response.json();
+          console.log(filter)
           setData(filter.res.reverse());
           setloading(false)
 

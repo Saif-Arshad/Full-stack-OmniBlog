@@ -16,7 +16,7 @@ export default function Home() {
     try {
       const timestamp = new Date().getTime();
       const fetching = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog?ts=${timestamp}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_LIVE_HOST}/api/fetchblog`, {
           cache: 'no-store',
         });
         const Blogdata = await res.json();

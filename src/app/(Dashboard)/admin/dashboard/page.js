@@ -74,7 +74,7 @@ const postlength = latest.length;
               latest.slice(0, 8).map((titles, index) => (
             // eslint-disable-next-line react/jsx-key
             <Link href={`/blog/${titles._id}`}>
-                <h2 className='md:font-semibold flex items-center justify-center sm:text-lg mt-1 hover:text-purple-800 dark:hover:text-orange-400 cursor-pointer' key={index}>
+                <h2 className='md:font-semibold flex items-center sm:text-lg mt-1 hover:text-purple-800 dark:hover:text-orange-400 cursor-pointer' key={index}>
                  <AiOutlineLink size={25}/>
               {titles.title.length > 50 ? `${titles.title.substring(0, 45)}....` : titles.title}
 

@@ -34,25 +34,25 @@ function Dropdown() {
               <Link onClick={closedropdown} href="/admin/dashboard/all-posts" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All Articles</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=technology" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Technology</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=technology" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Technology</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=food" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Food</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=food" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Food</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=health" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Health</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=health" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Health</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=movie" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Movie</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=movie" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Movie</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=sports" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sports</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=sport" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sports</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=fashion" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fashion</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=fashion" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fashion</Link>
             </li>
             <li>
-              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blog=lifestyle" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LifeStyle</Link>
+              <Link onClick={closedropdown} href="/admin/dashboard/all-posts?blogcategorie=lifestyle" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">LifeStyle</Link>
             </li>
           </ul>
         </div>
