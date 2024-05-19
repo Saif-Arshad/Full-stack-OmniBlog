@@ -52,7 +52,7 @@ function page(name) {
         <div className="w-full bg-white rounded-lg shadow border md:mt-0  sm:max-w-md xl:p-0  dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:w-96 md:space-y-3 sm:p-8">
             <p className="text-xl font-bold leading-tight text-center tracking-tight text-gray-900  dark:text-white md:text-2xl">
-                  Admin Dashboard
+                  Admin login
               </p><div>
                 <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
                   Firstname
