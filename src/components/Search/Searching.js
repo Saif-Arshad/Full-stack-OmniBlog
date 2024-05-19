@@ -3,10 +3,17 @@ import React from 'react'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState} from 'react';
+import { useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 function Searching() {
     const [search,setsearch] = useState("")
      const router = useRouter()
-    const submitSearch = async(e) =>{
+     const searchParams = useSearchParams()
+    const path = usePathname()
+     const getting = searchParams.get('filter1')
+     console.log(getting)
+   
+     const submitSearch = async(e) =>{
         e.preventDefault() 
         // console.log("submit clicked search");
             if (!search) {
@@ -35,12 +42,30 @@ function Searching() {
 </form>
 
         <div className="links text-sm mt-3 sm:mt-6 ">
- <Link href={"/"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>All</button></Link>
- <Link href={"/catagorie?filter1=technology"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Technology</button></Link>
- <Link href={"/catagorie?filter1=food&filter2=health"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Food & Health</button></Link>
- <Link href={"/catagorie?filter1=movie&filter2=sport"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Movie & Sports</button></Link>
- <Link href={"/catagorie?filter1=news"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>News</button></Link>
- <Link href={"/catagorie?filter1=fashion&filter2=lifestyle"}>   <button className='hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2'>Fashion & Lifestyle</button></Link>
+ <Link href={"/"}>   <button className={`
+    ${path=="/" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+ hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>All</button></Link>
+ <Link href={"/catagorie?filter1=technology"}>   <button className={`
+ ${getting=="technology" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+
+   dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>Technology</button></Link>
+ <Link href={"/catagorie?filter1=food&filter2=health"}> 
+   <button className={`
+ ${getting=="food" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+
+   hover:bg-purple-800 hover:text-white dark:hover:bg-blue-600 rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>Food & Health</button></Link>
+ <Link href={"/catagorie?filter1=movie&filter2=sport"}>   <button className={`
+ ${getting=="movie" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+
+  rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>Movie & Sports</button></Link>
+ <Link href={"/catagorie?filter1=news"}>   <button className={`
+ ${getting=="news" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+
+  rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>News</button></Link>
+ <Link href={"/catagorie?filter1=fashion&filter2=lifestyle"}>   <button className={`
+ ${getting=="fashion" ? "bg-purple-800 dark:hover:bg-blue-600 text-white" : "dark:hover:bg-blue-600 hover:bg-purple-800 hover:text-white"}
+
+  rounded-xl box-border py-1 px-2 sm:py-2 sm:px-2`}>Fashion & Lifestyle</button></Link>
 
 
         </div>
