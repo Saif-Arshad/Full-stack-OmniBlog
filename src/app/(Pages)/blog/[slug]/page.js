@@ -34,44 +34,19 @@ useEffect(() => {
 <Loading/> 
 </div>
 :
-
-<div className='flex flex-col w-full bg-white dark:bg-slate-900 justify-center items-center'>
-  <div className="mainContent w-10/12 lg:w-2/4 mb-8">
-  <div className="Header">
-         <h5 className='font-bold text-lg capitalize text-purple-800 dark:text-blue-500 mb-2'> {data.categorie} </h5>
-      <h1 className='text-2xl sm:text-3xl md:text-5xl font-semibold sm:font-bold'>{data.title}</h1>
-      <div className='flex flex-wrap gap-1 mt-6 items-center  text-purple-800 capitalize dark:text-blue-500 font-semibold'>
-
-                  <Image 
-                  className='rounded-xl'
-                  src={Dummy}
-                    height={20}
-                    width={25}
-                    alt={data.author}
-                  >
-
-                  </Image>
-                {data.author}
-                </div>
-
+<div className='bg-white dark:bg-slate-900'>
+  <div className="text-center pt-16 md:pt-32">
+    <p className="text-base md:text-lg capitalize my-3 text-purple-800 dark:text-blue-700 font-bold">  {data.categorie} / By   {data.author} </p>
+    <h1 className="font-bold break-normal text-3xl md:text-5xl">{data.title}</h1>
   </div>
-      <div className="Maincontent mt-9 md:mt-20">
-
-      <div className='Main-Image w-full h-full relative'>
-  <Image
-      src={`${data.image}`}
-      alt={`${data.title}`}
-      width={0}
-      height={0}
-      sizes="100vw"
-      style={{ width: '100%', height: 'auto' }} 
-    />
-  
-</div>
-  <p className='mt-8 sm:text-lg dark:text-gray-200 md:text-xl text-start'>
-    {data.maincontent}
-  </p>
-  <div className="subContent mt-8 cap">
+  <div className="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style={{backgroundImage: `url(${data.image})`, height: '75vh'}} />
+  <div className="container max-w-5xl mx-auto -mt-32">
+    <div className="mx-0 sm:mx-6">
+      <div className="bg-white  dark:bg-[hsl(0,0%,14%)] dark:text-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style={{fontFamily: 'Georgia,serif'}}>
+      <pre className='text-gray-800 font-sans dark:text-white text-lg mb-5 whitespace-pre-wrap'>
+      {data.maincontent}
+                </pre>
+                <div className="subContent mt-8 cap">
     {
       data.subContent.map((subcontent,index)=>(
         <div key={index}>
@@ -87,21 +62,29 @@ useEffect(() => {
     />
   
 </div> : ""}
-        <h1 className='font-semibold md:text-blod text-2xl md:text-3xl capitalize'>{subcontent.title}</h1>
-        <p className='mt-8 sm:text-lg dark:text-gray-200 md:text-xl text-start'>
+        <h1 className='font-semibold md:text-blod my-4  font-sans text-2xl md:text-3xl capitalize'>{subcontent.title}</h1>
+        <pre className='text-gray-800 font-sans dark:text-white text-lg mb-5 whitespace-pre-wrap'>
+
           {subcontent.content}
-        </p>
+        </pre>
         
         </div>
       ))
 
     }
   </div>
+        
+      </div>
 
-      </div>
+    </div>
   </div>
-      </div>
+
+
+</div>
+
 }
+
+
         </>
     )
 }
